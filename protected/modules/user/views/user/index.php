@@ -62,21 +62,12 @@ if(UserModule::isAdmin()) {
 			'type'=>'raw',
 			'value' => 'CHtml::link(CHtml::encode($data->username),array("user/update","id"=>$data->id))',
 		),
-		array(
-			'header' => 'Viesti',
-			'type'=>'raw',
-			'value' => 'CHtml::link("<i class=\"fa fa-envelope\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Lähetä uusi viesti\"></i>",array("//viestinta/create","saaja"=>$data->id))',
-		),
 		'profile.firstname',
 		'profile.lastname',
 		'create_at',
 		'lastvisit_at',
 		'status',
-		array(
-			'name' => 'profile.tyyppi',
-		    	'value'=>array($this,'tyyppiMuutos'),
-		    	'type' => 'raw',
-		),
+
 	),
 )); ?>
 </div>

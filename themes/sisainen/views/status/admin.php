@@ -2,15 +2,6 @@
 /* @var $this StatusController */
 /* @var $model Status */
 
-$this->breadcrumbs=array(
-	'Statuses'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Status', 'url'=>array('index')),
-	array('label'=>'Create Status', 'url'=>array('create')),
-);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,14 +17,41 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Statuses</h1>
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                Hallitse statukseja <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/user/create'; ?>" data-toggle="tooltip" data-placement="right" title="Luo uusi profiili"><i class="fa fa-plus-square"></i></a>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a>
+                                </li>
+                                <li class="active">Kaikki statukset</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE ROW -->
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+
+                    <!-- Striped Responsive Table -->
+                        <div class="portlet portlet-default">
+                            <div class="portlet-heading">
+                                <div class="portlet-title">
+                                    <h4>Status lista</h4>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="table-responsive">
+
+
+
+<?php echo CHtml::link('Haku','#',array('class'=>'search-button btn btn-default')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -44,9 +62,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'status-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'itemsCssClass' => 'table',
 	'columns'=>array(
 		'id',
-		'time',
+		//'time',
 		'name',
 		'user_creator_id',
 		array(
@@ -54,3 +73,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.portlet -->

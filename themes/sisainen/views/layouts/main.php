@@ -150,6 +150,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                                             Crawl Errors Detected
                                             <span class="badge orange pull-right">3</span>
 
+
                                         </a>
                                     </li>
                                     <li>
@@ -422,6 +423,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                                 </a>
                             </li>
                         </ul>
+
                         <!-- /.dropdown-menu -->
                     </li>
                     <!-- /.dropdown -->
@@ -523,7 +525,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
-                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status'; ?>">
+                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
                             <i class="fa fa-users"></i> Statukset
                         </a>
                     </li>
@@ -832,6 +834,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/flex.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/demo/dashboard-demo.js"></script>
     <!--<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.pulse.js"></script>-->
+
 
 <script>
 $(function () {

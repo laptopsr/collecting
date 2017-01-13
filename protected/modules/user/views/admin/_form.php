@@ -12,31 +12,31 @@
 
 	<?php echo $form->errorSummary(array($model,$profile)); ?>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>128, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'superuser'); ?>
 		<?php echo $form->dropDownList($model,'superuser',User::itemAlias('AdminStatus'),array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'superuser'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'status'); ?>
 		<?php echo $form->dropDownList($model,'status',User::itemAlias('UserStatus'),array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'status'); ?>
@@ -46,7 +46,7 @@
 		if ($profileFields) {
 			foreach($profileFields as $field) {
 			?>
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($profile,$field->varname); ?>
 		<?php 
 		if ($widgetEdit = $field->widgetEdit($profile)) {
@@ -65,8 +65,9 @@
 			}
 		}
 ?>
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tallenna' : 'Tallenna', array('class'=>'submit btn btn-primary')); ?>
+	<br>
+	<div class="buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tallenna' : 'Tallenna', array('class'=>'submit btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

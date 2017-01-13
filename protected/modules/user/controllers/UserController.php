@@ -137,7 +137,6 @@ class UserController extends Controller
 	        $criteria=new CDbCriteria;
 		$criteria->condition="
 			status > '".User::STATUS_BANNED."'
-			AND yid='".Yii::app()->user->id."'
 		";
 
 		$dataProvider=new CActiveDataProvider('User', array(

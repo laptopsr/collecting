@@ -4,6 +4,9 @@
 /* @var $form CActiveForm */
 ?>
 
+<div class="row form">
+ <div class="col-sm-4">
+
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'status-form',
 	'enableAjaxValidation'=>false,
@@ -13,29 +16,27 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-<div class="row form">
- <div class="col-sm-4">
 
-	<div class="row">
+
+	<div class="">
 		<?php echo $form->labelEx($model,'time'); ?>
 		<?php echo $form->textField($model,'time',array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'time'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'user_creator_id'); ?>
 		<?php echo $form->textField($model,'user_creator_id',array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user_creator_id'); ?>
 	</div>
 
- </div>
-</div><!-- form -->
+
 
 	<br>
 
@@ -45,4 +46,5 @@
 
 <?php $this->endWidget(); ?>
 
+ </div>
 </div><!-- form -->

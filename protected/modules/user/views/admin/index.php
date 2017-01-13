@@ -1,4 +1,3 @@
-<div class="row">
 <?php
 $this->breadcrumbs=array(
 	UserModule::t('Profiili')=>array('/user'),
@@ -22,14 +21,39 @@ $('.search-form form').submit(function(){
 
 ?>
 
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                Hallitse profiileja <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/user/create'; ?>" data-toggle="tooltip" data-placement="right" title="Luo uusi profiili"><i class="fa fa-plus-square"></i></a>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a>
+                                </li>
+                                <li class="active">Kaikki profiilit</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE ROW -->
 
 
 
-   <div class="panel panel-primary">
-     <div class="panel-heading"><i class="fa fa-user"></i> Hallitse profiileja</div>
-     <div class="panel-body">
+                    <!-- Striped Responsive Table -->
+                        <div class="portlet portlet-default">
+                            <div class="portlet-heading">
+                                <div class="portlet-title">
+                                    <h4>Henkilöstö</h4>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="table-responsive">
 
-<div class="table-responsive">
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
@@ -71,35 +95,11 @@ $('.search-form form').submit(function(){
 		),
 	),
 )); ?>
-</div>
 
-    </div>
-  </div>
-
-
-<div class="row">
- <div class="col-sm-4">
-   <div class="panel panel-primary">
-     <div class="panel-heading"><i class="fa fa-tasks"></i> Hallinta</div>
-     <div class="panel-body">
-	<?php 
-
-		if(UserModule::isAdmin())
-		{
-		echo CHtml::link('Luo uusi profiili',Yii::app()->request->baseUrl.'/index.php/user/admin/create',array('class'=>'btn btn-block btn-primary'));
-
-		if(Yii::app()->user->name == 'admin') 
-		{
-		//echo CHtml::link('Hallitse käyttäjiä',Yii::app()->request->baseUrl.'/index.php/user/admin',array('class'=>'btn btn-block btn-primary'));
-		//echo CHtml::link('Hallitse profiilikenttiä',Yii::app()->request->baseUrl.'/index.php/user/profileField/admin',array('class'=>'btn btn-block btn-primary'));
-		//echo CHtml::link('Listaa käyttäjät',Yii::app()->request->baseUrl.'/index.php/user',array('class'=>'btn btn-block btn-primary'));
-		}
-		}
-	?>
-    </div>
-  </div>
- </div>
-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.portlet -->
 
 
-</div>
+

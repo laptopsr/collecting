@@ -4,37 +4,37 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="wide form">
-
+<div class="row form">
+ <div class="col-sm-4">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+		<?php echo $form->textField($model,'id', array('class'=>'form-control')); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->label($model,'time'); ?>
-		<?php echo $form->textField($model,'time'); ?>
+		<?php echo $form->textField($model,'time', array('class'=>'form-control')); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->label($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->label($model,'user_creator_id'); ?>
-		<?php echo $form->textField($model,'user_creator_id'); ?>
+		<?php echo $form->textField($model,'user_creator_id', array('class'=>'form-control')); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+	<br>
+	<div class="buttons">
+		<?php echo CHtml::submitButton('Hae', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
+ </div>
 </div><!-- search-form -->
