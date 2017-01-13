@@ -513,7 +513,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
                     	 <li>
 	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="#">
-	                            <i class="fa fa-plane"></i> Valmiit
+	                            <i class="fa fa-archive"></i> Valmiit
 	                        </a>
 	                 </li>
                         </ul>
@@ -524,7 +524,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
                         <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status'; ?>">
-                            <i class="fa fa-ellipsis-h"></i> Statukset
+                            <i class="fa fa-users"></i> Statukset
                         </a>
                     </li>
 		    <?php endif; ?>

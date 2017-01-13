@@ -88,11 +88,11 @@ $('.search-form form').submit(function(){
 		{
 		echo CHtml::link('Luo uusi profiili',Yii::app()->request->baseUrl.'/index.php/user/admin/create',array('class'=>'btn btn-block btn-primary'));
 
-		if(Yii::app()->user->name == 'admin' or Yii::app()->user->name == 'pekka') 
+		if(Yii::app()->user->name == 'admin') 
 		{
-		echo CHtml::link('Hallitse käyttäjiä',Yii::app()->request->baseUrl.'/index.php/user/admin',array('class'=>'btn btn-block btn-primary'));
-		echo CHtml::link('Hallitse profiilikenttiä',Yii::app()->request->baseUrl.'/index.php/user/profileField/admin',array('class'=>'btn btn-block btn-primary'));
-		echo CHtml::link('Listaa käyttäjät',Yii::app()->request->baseUrl.'/index.php/user',array('class'=>'btn btn-block btn-primary'));
+		//echo CHtml::link('Hallitse käyttäjiä',Yii::app()->request->baseUrl.'/index.php/user/admin',array('class'=>'btn btn-block btn-primary'));
+		//echo CHtml::link('Hallitse profiilikenttiä',Yii::app()->request->baseUrl.'/index.php/user/profileField/admin',array('class'=>'btn btn-block btn-primary'));
+		//echo CHtml::link('Listaa käyttäjät',Yii::app()->request->baseUrl.'/index.php/user',array('class'=>'btn btn-block btn-primary'));
 		}
 		}
 	?>

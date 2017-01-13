@@ -1,20 +1,8 @@
 <?php
 /* @var $this StatusController */
 /* @var $model Status */
-
-$this->breadcrumbs=array(
-	'Statuses'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	//array('label'=>'List Status', 'url'=>array('index')),
-	//array('label'=>'Manage Status', 'url'=>array('admin')),
-);
 ?>
 
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 
 
                 <!-- begin PAGE TITLE ROW -->
@@ -25,8 +13,8 @@ $this->menu=array(
                                 Statukset
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status'; ?>">Etusivu</a></li>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/asiakkaat/index'; ?>">statukset</a></li>
+                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status'; ?>">statukset</a></li>
                                 <li class="active">  luo status</li>
                             </ol>
                         </div>
