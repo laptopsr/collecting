@@ -35,11 +35,11 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', 
-				'actions'=>array('index'),
-				'users'=>array('*'),
+				'actions'=>array('index', 'collecting', 'collecting_product', 'collecting_product_quantity', 'keskeyta', 'keskeyta_rows', 'check_barcode'),
+				'users'=>array('@'),
 			),
 			array('allow', 
-				'actions'=>array(),
+				'actions'=>array(''),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -150,6 +150,89 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+
+	public function actionCollecting()
+	{
+		// <-- Get last row from Flights
+		$criteria = new CDbCriteria;
+		$criteria->order = " id DESC "; 
+		$criteria->limit = 1; // viimeinen 1 rivi
+		$criteria->condition = " status=1 ";
+		$lastRowModel = Flights::model()->find($criteria);
+		//    Get last row from Flights -->
+
+		$cr = array();
+		if(isset($lastRowModel->id))
+		{
+			$criteria = new CDbCriteria;
+			$criteria->condition = " flight_no_id='".$lastRowModel->id."' ";
+			$cr = CollectorRows::model()->findAll($criteria);
+		}
+
+		$this->render('collecting', array(
+			'lastRowModel'=>$lastRowModel,
+			'cr'=>$cr,
+		));
+	}
+
+	public function actionCollecting_product($id)
+	{
+
+		$criteria = new CDbCriteria;
+		$criteria->order = " id ASC ";
+		$criteria->condition = " flight_no_id='".$id."' ";
+		$model = CollectorRows::model()->find($criteria);
+
+
+		$this->render('collecting_product', array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionCollecting_product_quantity($id)
+	{
+
+		$model = CollectorRows::model()->findByPk($id);
+
+		$this->render('collecting_product_quantity', array(
+			'model'=>$model,
+		));
+	}
+
+
+	public function actionKeskeyta($id)
+	{
+
+		Flights::model()->updateByPk($id, array('status'=>3));
+		$this->redirect(Yii::app()->homeUrl);
+		
+	}
+
+	public function actionKeskeyta_rows($id)
+	{
+
+		CollectorRows::model()->updateByPk($id, array('status'=>3));
+		$this->redirect(Yii::app()->homeUrl);
+		
+	}
+
+	public function actionCheck_barcode($id)
+	{
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = " 
+			id='".$id."' 
+			AND barcode='".trim($_POST['barcode'])."'
+		";
+		$model = CollectorRows::model()->find($criteria);
+
+
+		if(isset($model->id))
+			echo json_encode(array('OK'=>'Barcode on sama'));
+		else
+			echo json_encode(array('ERROR'=>$_POST['barcode'].' '.$id));
+
 	}
 
 

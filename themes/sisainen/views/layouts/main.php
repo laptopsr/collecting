@@ -71,9 +71,11 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
             <!-- begin BRAND HEADING -->
             <div class="navbar-header">
 
+		<?php if(Yii::app()->user->isAdmin()) : ?>
                 <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".sidebar-collapse">
                     <i class="fa fa-bars"></i> Menu
                 </button>
+		<?php endif; ?>
 
                 <div class="navbar-brand">
                     <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/index" style="color:#ccc">
@@ -88,7 +90,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
             <div class="nav-top">
 
                 <!-- begin LEFT SIDE WIDGETS -->
-		    <?php if(Yii::app()->user->isAdmin()) : ?>
+		<?php if(Yii::app()->user->isAdmin()) : ?>
                 <ul class="nav navbar-left">
                     <li class="tooltip-sidebar-toggle">
                         <a href="#" id="sidebar-toggle" data-toggle="tooltip" data-placement="right" title="Piilota valikko">
@@ -97,7 +99,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                     </li>
                     <!-- You may add more widgets here using <li> -->
                 </ul>
-		    <?php endif; ?>
+		<?php endif; ?>
                 <!-- end LEFT SIDE WIDGETS -->
 
                 <!-- begin MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
@@ -149,6 +151,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                                             </div>
                                             Crawl Errors Detected
                                             <span class="badge orange pull-right">3</span>
+
 
 
                                         </a>
@@ -409,13 +412,11 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                             <i class="fa fa-user"></i>  <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-
                             <li>
                                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/user/profile/edit">
                                     <i class="fa fa-user"></i> Profiili
                                 </a>
                             </li>
-		    <?php endif; ?>
                             <li>
                                 <a class="logout_open" href="#logout">
                                     <i class="fa fa-sign-out"></i> Kirjaudu ulos
@@ -426,6 +427,14 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
                         <!-- /.dropdown-menu -->
                     </li>
+		    <?php else : ?>
+                            <li>
+                                <a class="logout_open" href="#logout">
+                                    <i class="fa fa-sign-out"></i> Kirjaudu ulos
+                                    <strong><?php echo Yii::app()->user->firstname; ?> <?php echo Yii::app()->user->lastname; ?></strong>
+                                </a>
+                            </li>
+		    <?php endif; ?>
                     <!-- /.dropdown -->
                     <!-- end USER ACTIONS DROPDOWN -->
 
@@ -519,6 +528,15 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 	                        </a>
 	                 </li>
                         </ul>
+                    </li>
+		    <?php endif; ?>
+
+
+		    <?php if(Yii::app()->user->isAdmin()) : ?>
+                    <li>
+                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
+                            <i class="fa fa-barcode"></i> Tulosta tarra
+                        </a>
                     </li>
 		    <?php endif; ?>
 

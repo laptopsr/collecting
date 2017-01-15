@@ -13,8 +13,8 @@
 	<?php echo CHtml::encode($data->time); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('flight_no')); ?>:</b>
-	<?php echo CHtml::encode($data->flight_no); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('flight_no_id')); ?>:</b>
+	<?php echo CHtml::encode($data->flight_no_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>

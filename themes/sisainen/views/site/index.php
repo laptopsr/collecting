@@ -46,7 +46,7 @@
 
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
-                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/collectorRows">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting">
                                 <div class="circle-tile-heading green">
                                     <i class="fa fa-database fa-fw fa-3x"></i>
                                 </div>
@@ -58,7 +58,26 @@
                                 <div class="circle-tile-number text-faded">
                                     0
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/collectorRows" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="circle-tile">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting">
+                                <div class="circle-tile-heading green">
+                                    <i class="fa fa-barcode fa-fw fa-3x"></i>
+                                </div>
+                            </a>
+                            <div class="circle-tile-content green">
+                                <div class="circle-tile-description text-faded">
+                                    Tulosta tarra
+                                </div>
+                                <div class="circle-tile-number text-faded">
+                                    0
+                                </div>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

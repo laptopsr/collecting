@@ -42,7 +42,7 @@ class Flights extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('time, status, flight_no, destination, date, collector_id, collecting_start, collecting_end', 'required'),
+			array('flight_no', 'required'),
 			array('status, collector_id', 'numerical', 'integerOnly'=>true),
 			array('flight_no, destination', 'length', 'max'=>255),
 			array('date, collecting_start, collecting_end', 'length', 'max'=>50),

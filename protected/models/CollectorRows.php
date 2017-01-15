@@ -41,13 +41,13 @@ class CollectorRows extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('time, flight_no, date, status, product_name, quantity, barcode', 'required'),
-			array('status, quantity', 'numerical', 'integerOnly'=>true),
-			array('flight_no, product_name, barcode', 'length', 'max'=>255),
+			array('time, flight_no_id, date, status, product_name, quantity, barcode', 'required'),
+			array('status, quantity, flight_no_id', 'numerical', 'integerOnly'=>true),
+			array('product_name, barcode', 'length', 'max'=>255),
 			array('date', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, flight_no, date, status, product_name, quantity, barcode', 'safe', 'on'=>'search'),
+			array('id, time, flight_no_id, date, status, product_name, quantity, barcode', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,7 +70,7 @@ class CollectorRows extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'time' => 'Time',
-			'flight_no' => 'Flight No',
+			'flight_no_id' => 'Flight No',
 			'date' => 'Date',
 			'status' => 'Status',
 			'product_name' => 'Product Name',
@@ -92,7 +92,7 @@ class CollectorRows extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('time',$this->time,true);
-		$criteria->compare('flight_no',$this->flight_no,true);
+		$criteria->compare('flight_no_id',$this->flight_no,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('product_name',$this->product_name,true);
