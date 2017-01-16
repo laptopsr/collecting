@@ -35,7 +35,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', 
-				'actions'=>array('index', 'collecting', 'collecting_product', 'collecting_product_quantity', 'keskeyta', 'keskeyta_rows', 'check_barcode'),
+				'actions'=>array('index', 'collecting', 'collecting_product', 'collecting_product_quantity', 'collecting_product_for_next', 'insert_barcode_kohde_osoite', 'collecting_accept', 'keskeyta', 'keskeyta_rows', 'check_barcode', 'collecting_all_done'),
 				'users'=>array('@'),
 			),
 			array('allow', 
@@ -63,6 +63,13 @@ class SiteController extends Controller
 
 
 
+	public function actionCollecting_all_done()
+	{
+		
+		$this->render('collecting_all_done', array(
+			//'isMessage'=>$isMessage
+		));
+	}
 
 	public function actionIndex()
 	{
@@ -181,12 +188,26 @@ class SiteController extends Controller
 
 		$criteria = new CDbCriteria;
 		$criteria->order = " id ASC ";
-		$criteria->condition = " flight_no_id='".$id."' ";
+		$criteria->condition = " flight_no_id='".$id."' AND status!=4 ";
 		$model = CollectorRows::model()->find($criteria);
+	
+		// <-- update status
+		if(isset($model->id))
+		{
+			Flights::model()->updateByPk($id, array(
+					'status'=>2,
+					'collector_id'=>Yii::app()->user->id,
+					'collecting_start'=>date("d.m.Y H:i")
+			));
 
+
+			CollectorRows::model()->updateAll(array('status'=>2), $criteria);
+		}
+		//     update status -->
 
 		$this->render('collecting_product', array(
 			'model'=>$model,
+			'flights_id'=>$id,
 		));
 	}
 
@@ -195,16 +216,54 @@ class SiteController extends Controller
 
 		$model = CollectorRows::model()->findByPk($id);
 
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = " flight_no_id='".$model->flight_no_id."' AND status!=4 ";
+		$cr4 = CollectorRows::model()->findAll($criteria);
+		
+		if( count($cr4) > 0 )
+			$takaisin = true;
+		else
+			$takaisin = false;
+
 		$this->render('collecting_product_quantity', array(
 			'model'=>$model,
+			'takaisin'=>$takaisin
 		));
 	}
 
 
-	public function actionKeskeyta($id)
+	public function actionCollecting_product_for_next($row_id, $flights_id)
+	{
+		CollectorRows::model()->updateByPk($row_id, array('status'=>4));
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = " flight_no_id='".$flights_id."' AND status!=4 ";
+		$model = CollectorRows::model()->find($criteria);
+	
+		if(isset($model->id))
+		{
+			$this->redirect('collecting_product?id='.$flights_id);
+		} else {
+			$this->redirect('collecting_accept?id='.$flights_id.'&row_id='.$row_id);
+		}
+
+	}
+
+
+	public function actionKeskeyta()
 	{
 
-		Flights::model()->updateByPk($id, array('status'=>3));
+		$id = $_POST['flight_id'];
+
+		Flights::model()->updateByPk($id, array('status'=>3, 'keskeytys_syy'=>$_POST['keskeytys_syy']));
+
+		$criteria = new CDbCriteria;
+		$criteria->order = " id ASC ";
+		$criteria->condition = " flight_no_id='".$id."' ";
+
+		CollectorRows::model()->updateAll(array('status'=>3), $criteria);
+
 		$this->redirect(Yii::app()->homeUrl);
 		
 	}
@@ -235,5 +294,43 @@ class SiteController extends Controller
 
 	}
 
+	public function actionCollecting_accept($id, $row_id)
+	{
+
+		$model = Flights::model()->findByPk($id);
+
+		$this->render('collecting_accept', array('model'=>$model, 'row_id'=>$row_id));
+		
+	}
+
+	public function actionInsert_barcode_kohde_osoite($id)
+	{
+
+		$model = Flights::model()->findByPk($id);
+
+		$collecting_start = $model->collecting_start;
+		$collecting_end = date("d.m.Y H:i");
+		$collecting_totaltime = '00:00';
+
+		if(strtotime($collecting_start) < strtotime($collecting_end))
+		{
+			$result=strtotime($collecting_end)-strtotime($collecting_start);
+			$collecting_totaltime = $this->sprint($result);
+		}
+
+		Flights::model()->updateByPk($id, array(
+			'insert_barcode_kohde_osoite'=>$_POST['barcode'],
+			'status'=>4,
+			'collecting_end'=>$collecting_end,
+			'collecting_totaltime'=>$collecting_totaltime
+		));
+		echo json_encode(array('OK'=>'Barcode lisätty.'));
+		
+	}
+
+	protected function sprint($val){
+	   	    if($val > 0)
+		   	   return sprintf('%02d:%02d', $val/3600, ($val % 3600)/60);
+	}
 
 }

@@ -1,7 +1,16 @@
 <?php
-/* @var $this CollectorRowsController */
-/* @var $model CollectorRows */
+/* @var $this ProductsController */
+/* @var $model Products */
 
+$this->breadcrumbs=array(
+	'Products'=>array('index'),
+	'Manage',
+);
+
+$this->menu=array(
+	array('label'=>'List Products', 'url'=>array('index')),
+	array('label'=>'Create Products', 'url'=>array('create')),
+);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -9,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#collector-rows-grid').yiiGridView('update', {
+	$('#products-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -17,6 +26,12 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
+<h1>Manage Products</h1>
+
+<p>
+You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+</p>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -26,20 +41,14 @@ $('.search-form form').submit(function(){
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'collector-rows-grid',
+	'id'=>'products-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
 		'time',
-		'flight_no_id',
-		'date',
-		'status',
-		'product_name',
-		/*
-		'quantity',
+		'name',
 		'barcode',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

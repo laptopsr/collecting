@@ -2,15 +2,6 @@
 /* @var $this FlightsController */
 /* @var $model Flights */
 
-$this->breadcrumbs=array(
-	'Flights'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Flights', 'url'=>array('index')),
-	array('label'=>'Create Flights', 'url'=>array('create')),
-);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,14 +17,132 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Flights</h1>
+<?php
+	$sivu = '';
+	if(isset($_GET['avoimet']))
+	{
+		$sivu = 'Avoimet';
+		$sarakkeet = array(
+		'id',
+		//'time',
+		array(
+        		'name'  => 'flight_no',
+			'value'=>array($this,'lentoLinkki'),
+			'type'=>'raw',
+		),
+		'destination',
+		'date',
+		array(
+			'class'=>'CButtonColumn',
+		)
+		);
+	}
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+	if(isset($_GET['kerailyssa']))
+	{
+		$sivu = 'Kerailyssä';
+		$sarakkeet = array(
+		'id',
+		//'time',
+		array(
+        		'name'  => 'flight_no',
+			'value'=>array($this,'lentoLinkki'),
+			'type'=>'raw',
+		),
+		'destination',
+		array(
+        		'name'  => 'collector_id',
+			'value'=>array($this,'etuSukunimi'),
+		),
+		'collecting_start',
+		array(
+			'class'=>'CButtonColumn',
+		)
+		);
+	}
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+	if(isset($_GET['keskeytetyt']))
+	{
+		$sivu = 'Keskeytetyt';
+		$sarakkeet = array(
+		'id',
+		//'time',
+		array(
+        		'name'  => 'flight_no',
+			'value'=>array($this,'lentoLinkki'),
+			'type'=>'raw',
+		),
+		'destination',
+		array(
+        		'name'  => 'collector_id',
+			'value'=>array($this,'etuSukunimi'),
+		),
+		'collecting_start',
+		'keskeytys_syy',
+		array(
+			'class'=>'CButtonColumn',
+		)
+		);
+	}
+
+	if(isset($_GET['valmiit']))
+	{
+		$sivu = 'Valmiit';
+		$sarakkeet = array(
+		'id',
+		//'time',
+		array(
+        		'name'  => 'flight_no',
+			'value'=>array($this,'lentoLinkki'),
+			'type'=>'raw',
+		),
+		'destination',
+		array(
+        		'name'  => 'collector_id',
+			'value'=>array($this,'etuSukunimi'),
+		),
+		'collecting_start',
+		'collecting_end',
+		'collecting_totaltime',
+		array(
+			'class'=>'CButtonColumn',
+		)
+		);
+	}
+?>
+
+
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                Lentot
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li class="active"> <?php echo $sivu; ?></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE ROW -->
+
+
+
+<div class="portlet portlet-default">
+  <div class="portlet-heading">
+      <div class="portlet-title">
+         <h4>Lista</h4>
+      </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="portlet-body">
+
+
+<?php echo CHtml::link('Haku','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -44,20 +153,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'flights-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'time',
-		'status',
-		'flight_no',
-		'destination',
-		'date',
-		/*
-		'collector_id',
-		'collecting_start',
-		'collecting_end',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
+
+        'pagerCssClass' => 'dataTables_paginate paging_bootstrap',
+        'itemsCssClass' => 'table table-striped table-hover',
+
+	'columns'=>$sarakkeet
 )); ?>
+
+   </div>
+ </div>
+</div>
+<!-- /.portlet -->

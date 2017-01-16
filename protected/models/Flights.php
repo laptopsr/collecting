@@ -45,10 +45,11 @@ class Flights extends CActiveRecord
 			array('flight_no', 'required'),
 			array('status, collector_id', 'numerical', 'integerOnly'=>true),
 			array('flight_no, destination', 'length', 'max'=>255),
-			array('date, collecting_start, collecting_end', 'length', 'max'=>50),
+			array('date, collecting_start, collecting_end, collecting_totaltime', 'length', 'max'=>50),
+			array('keskeytys_syy', 'length', 'max'=>5000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, status, flight_no, destination, date, collector_id, collecting_start, collecting_end', 'safe', 'on'=>'search'),
+			array('id, time, status, flight_no, destination, date, collector_id, collecting_start, collecting_end, collecting_totaltime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,12 +73,14 @@ class Flights extends CActiveRecord
 			'id' => 'ID',
 			'time' => 'Time',
 			'status' => 'Status',
-			'flight_no' => 'Flight No',
-			'destination' => 'Destination',
-			'date' => 'Date',
-			'collector_id' => 'Collector',
-			'collecting_start' => 'Collecting Start',
-			'collecting_end' => 'Collecting End',
+			'flight_no' => 'Lennon numero',
+			'destination' => 'Päämäärä',
+			'date' => 'Pvm',
+			'collector_id' => 'Keräilijä',
+			'collecting_start' => 'Keräily alkoi',
+			'collecting_end' => 'Keräily päättyi',
+			'keskeytys_syy' => 'Keskeytyksen syy',
+			'collecting_totaltime' => 'Keräilyaika',
 		);
 	}
 
@@ -92,6 +95,18 @@ class Flights extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		if(isset($_GET['avoimet']))
+		$criteria->condition = " status=1 ";
+
+		if(isset($_GET['kerailyssa']))
+		$criteria->condition = " status=2 ";
+
+		if(isset($_GET['keskeytetyt']))
+		$criteria->condition = " status=3 ";
+
+		if(isset($_GET['valmiit']))
+		$criteria->condition = " status=4 ";
+
 		$criteria->compare('id',$this->id);
 		$criteria->compare('time',$this->time,true);
 		$criteria->compare('status',$this->status);
@@ -101,6 +116,8 @@ class Flights extends CActiveRecord
 		$criteria->compare('collector_id',$this->collector_id);
 		$criteria->compare('collecting_start',$this->collecting_start,true);
 		$criteria->compare('collecting_end',$this->collecting_end,true);
+		$criteria->compare('keskeytys_syy',$this->keskeytys_syy,true);
+		$criteria->compare('collecting_totaltime',$this->collecting_totaltime,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

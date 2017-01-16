@@ -100,8 +100,8 @@ class User extends CActiveRecord
 			'create_at' => UserModule::t("Rekisteröinti pv"),
 			
 			'lastvisit_at' => UserModule::t("Viimeksi kirjautunut"),
-			'superuser' => UserModule::t("Superuser"),
-			'status' => UserModule::t("Tilanne"),
+			'superuser' => UserModule::t("Pääkäyttäjä"),
+			'status' => UserModule::t("Käyttäjästatus"),
 		);
 	}
 	
@@ -137,13 +137,13 @@ class User extends CActiveRecord
 	public static function itemAlias($type,$code=NULL) {
 		$_items = array(
 			'UserStatus' => array(
-				self::STATUS_NOACTIVE => UserModule::t('Not active'),
-				self::STATUS_ACTIVE => UserModule::t('Active'),
-				self::STATUS_BANNED => UserModule::t('Banned'),
+				self::STATUS_NOACTIVE => UserModule::t('Ei aktiivinen'),
+				self::STATUS_ACTIVE => UserModule::t('Aktiivinen'),
+				self::STATUS_BANNED => UserModule::t('Estetty'),
 			),
 			'AdminStatus' => array(
-				'0' => UserModule::t('No'),
-				'1' => UserModule::t('Yes'),
+				'0' => UserModule::t('Ei'),
+				'1' => UserModule::t('Kyllä'),
 			),
 		);
 		if (isset($code))

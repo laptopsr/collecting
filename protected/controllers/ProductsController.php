@@ -1,6 +1,6 @@
 <?php
 
-class FlightsController extends Controller
+class ProductsController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -75,14 +75,14 @@ class FlightsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Flights;
+		$model=new Products;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Flights']))
+		if(isset($_POST['Products']))
 		{
-			$model->attributes=$_POST['Flights'];
+			$model->attributes=$_POST['Products'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -104,21 +104,11 @@ class FlightsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Flights']))
+		if(isset($_POST['Products']))
 		{
-			$model->attributes=$_POST['Flights'];
+			$model->attributes=$_POST['Products'];
 			if($model->save())
-			{
-
-
-
-				$criteria = new CDbCriteria;
-				$criteria->order = " id ASC ";
-				$criteria->condition = " flight_no_id='".$model->id."' ";
-				CollectorRows::model()->updateAll(array('status'=>$model->status), $criteria);
-
-				$this->redirect(array('//site/index'));
-			}
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -145,7 +135,7 @@ class FlightsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Flights');
+		$dataProvider=new CActiveDataProvider('Products');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -156,10 +146,10 @@ class FlightsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Flights('search');
+		$model=new Products('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Flights']))
-			$model->attributes=$_GET['Flights'];
+		if(isset($_GET['Products']))
+			$model->attributes=$_GET['Products'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -170,12 +160,12 @@ class FlightsController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Flights the loaded model
+	 * @return Products the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Flights::model()->findByPk($id);
+		$model=Products::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -183,51 +173,14 @@ class FlightsController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Flights $model the model to be validated
+	 * @param Products $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='flights-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='products-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-
-	protected function etuSukunimi($data)
-	{
-
-		$model=Profile::model()->findByPk($data->collector_id);
-		if(isset($model->user_id))
-		return $model->firstname.' '.$model->lastname;
-	}
-
-	protected function lentoLinkki($data)
-	{
-		$return = CHtml::link($data->flight_no, Yii::app()->request->baseUrl.'/index.php/collectorRows/admin?flights_id='.$data->id,
-			 array('class'=>'link')
-		);
-		return $return;
-	}
-
-
-/*
-	protected function kerailyaika($data)
-	{
-
-		if(!empty($data->collecting_end) 
-			and !empty($data->collecting_start) 
-			and strtotime($data->collecting_start) < strtotime($data->collecting_end)
-		)
-		{
-			$result=strtotime($data->collecting_end)-strtotime($data->collecting_start);
-			return $this->sprint($result);
-		}
-	}
-*/
-	protected function sprint($val){
-	   	    if($val > 0)
-		   	   return sprintf('%02d:%02d', $val/3600, ($val % 3600)/60);
-	}
-
 }

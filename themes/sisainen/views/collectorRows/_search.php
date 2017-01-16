@@ -22,8 +22,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'flight_no'); ?>
-		<?php echo $form->textField($model,'flight_no',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->label($model,'flight_no_id'); ?>
+		<?php echo $form->textField($model,'flight_no_id',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
 
 	<div class="row">

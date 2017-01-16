@@ -1,9 +1,5 @@
 <?php
-	if(!isset($model->id))
-	{
-		echo '<h1>Kaikki keräilyt on valmiina tai jo keräyksessä. Sinut siiretään etusivulle hetken kuluttua.</h1>';
-		exit;
-	}
+
 ?>
 
 <div class="row">
@@ -14,7 +10,7 @@
                         <div class="page-title">
 			 <center>
                             <h1>
-                                NIMIKE:  <?php echo $model->product_name; ?>
+                                KERÄILY <?php if(isset($model->flight_no)) echo $model->flight_no; ?> VALMIS. ANNA LOPPUSIJOITUS.
                             </h1>
 			 </center>
                         </div>
@@ -57,11 +53,17 @@
 
 <div class="row">
  <div class="col-sm-4 col-sm-offset-4">
+  <?php echo CHtml::link('Takaisin', Yii::app()->request->baseUrl.'/index.php/site/collecting_product_quantity?id='.$row_id, array('class'=>'btn btn-lg btn-default btn-block')); ?>
+ </div>
+</div>
+<br>
+<div class="row">
+ <div class="col-sm-4 col-sm-offset-4">
   <button class="btn btn-lg btn-default btn-block" data-toggle="collapse" data-target="#Keskeyta"> Keskeytä <i class="caret"></i></button>
   <div class="collapse" id="Keskeyta">
   <p>
 	<form id="keskeytaLomake" action="<?php echo Yii::app()->request->baseUrl.'/index.php/site/keskeyta'; ?>" method="POST">
-	      <input type="hidden" class="form-control" name="flight_id" value="<?php echo $flights_id; ?>">
+	      <input type="hidden" class="form-control" name="flight_id" value="<?php echo $model->id; ?>">
 	      <textarea class="form-control" name="keskeytys_syy" id="keskeytys_syy" placeholder="Kirjoita syy tähän"></textarea>
 	      <br>
 	      <button type="submit" class="btn btn-default btn-block" type="button">Hyväksy keskeytys</button>
@@ -91,6 +93,7 @@ $(document).ready(function(){
 </script>
 
 
+
 <script>
 $(document).ready(function(){
 
@@ -108,20 +111,15 @@ $(document).ready(function(){
  {
 
         $.ajax({
-           url: 'check_barcode?id='+ $('#this_id').val(),
+           url: 'insert_barcode_kohde_osoite?id='+ $('#this_id').val(),
            type: "POST",
            data: { barcode : $('#barcode').val() },
            success: function(data){
 		data = JSON.parse(data);
-		console.log(data);
+		//console.log(data);
 		if(data['OK'])
 		{
-			window.location.href="collecting_product_quantity?id=" + $('#this_id').val();
-		} 
-		if(data['ERROR'])
-		{
-			alert('Viivakoodi ei täsmää kerättävään tuotteeseen.');
-				//data['ERROR']+ //toi oli alaertissa
+			window.location.href="collecting";
 		} 
 
            }

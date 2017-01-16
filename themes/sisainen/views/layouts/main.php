@@ -534,7 +534,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
-                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
+                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">
                             <i class="fa fa-barcode"></i> Tulosta tarra
                         </a>
                     </li>

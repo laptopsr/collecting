@@ -1,18 +1,12 @@
 <?php
-/* @var $this AsiakkaatController */
-/* @var $model Asiakkaat */
+/* @var $this ProductsController */
+/* @var $model Products */
 
 
 $arr = array(
 		'id',
-		'username',
-		'password',
-		'email',
-		//'activkey',
-		'create_at',
-		'lastvisit_at',
-		'superuser',
-		'status',
+		'name',
+		'barcode',
 
 	);
 
@@ -25,13 +19,15 @@ $arr = array(
                     <div class="col-lg-12">
                         <div class="page-title">
                             <h1>
-                                Profiilit
+                                Tuotteet
                             </h1>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin'; ?>">Profiilien hallinta</a></li>
-                                <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin/update/id/'.$model->id; ?>">muokkaa profiilia #<?php echo $model->id; ?></a></li>
-                                <li class="active">  status #<?php echo $model->id; ?></li>
+		    		<?php if(Yii::app()->user->isAdmin()) : ?>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">tuotteiden hallinta</a></li>
+                                <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/update?id='.$model->id; ?>">muokkaa tuotetta #<?php echo $model->id; ?></a></li>
+		    		<?php endif; ?>
+                                <li class="active">  tuote id #<?php echo $model->id; ?></li>
                             </ol>
                         </div>
                     </div>
@@ -63,3 +59,9 @@ $arr = array(
  </div>
 </div>
 <!-- /.portlet -->
+
+<br>
+
+<?php echo CHtml::button('Tulosta tarra', array('class'=>'btn btn-default tulosta')); ?>
+
+

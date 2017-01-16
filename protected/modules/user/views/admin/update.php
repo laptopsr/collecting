@@ -28,7 +28,7 @@
                         <div class="portlet portlet-default">
                             <div class="portlet-heading">
                                 <div class="portlet-title">
-                                    <h4>Muoka</h4>
+                                    <h4>Muokkaa</h4>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>

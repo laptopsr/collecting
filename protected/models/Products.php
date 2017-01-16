@@ -1,24 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "collector_rows".
+ * This is the model class for table "products".
  *
- * The followings are the available columns in table 'collector_rows':
+ * The followings are the available columns in table 'products':
  * @property integer $id
  * @property string $time
- * @property string $flight_no
- * @property string $date
- * @property integer $status
- * @property string $product_name
- * @property integer $quantity
+ * @property string $name
  * @property string $barcode
  */
-class CollectorRows extends CActiveRecord
+class Products extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return CollectorRows the static model class
+	 * @return Products the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -30,7 +26,7 @@ class CollectorRows extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'collector_rows';
+		return 'products';
 	}
 
 	/**
@@ -41,13 +37,11 @@ class CollectorRows extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('time, flight_no_id, date, status, product_name, quantity, barcode', 'required'),
-			array('status, quantity, flight_no_id', 'numerical', 'integerOnly'=>true),
-			array('product_name, barcode', 'length', 'max'=>255),
-			array('date', 'length', 'max'=>50),
+			array('time, name, barcode', 'required'),
+			array('name, barcode', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, flight_no_id, date, status, product_name, quantity, barcode', 'safe', 'on'=>'search'),
+			array('id, time, name, barcode', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,12 +64,8 @@ class CollectorRows extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'time' => 'Time',
-			'flight_no_id' => 'Flight No',
-			'date' => 'Date',
-			'status' => 'Status',
-			'product_name' => 'Product Name',
-			'quantity' => 'Quantity',
-			'barcode' => 'Barcode',
+			'name' => 'Tuotteen nimi',
+			'barcode' => 'Viviakoodi',
 		);
 	}
 
@@ -90,16 +80,9 @@ class CollectorRows extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		if(isset($_GET['flights_id']))
-		$criteria->condition = " flight_no_id='".$_GET['flights_id']."' ";
-
 		$criteria->compare('id',$this->id);
 		$criteria->compare('time',$this->time,true);
-		$criteria->compare('flight_no_id',$this->flight_no_id,true);
-		$criteria->compare('date',$this->date,true);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('product_name',$this->product_name,true);
-		$criteria->compare('quantity',$this->quantity);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('barcode',$this->barcode,true);
 
 		return new CActiveDataProvider($this, array(

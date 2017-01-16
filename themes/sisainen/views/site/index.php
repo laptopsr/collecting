@@ -56,16 +56,16 @@
                                     Aloita keräily
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+				<br>
                                 </div>
                                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
-
+		    <?php if(!Yii::app()->user->isAdmin() and !Yii::app()->user->isGuest) : ?>
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
-                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/products">
                                 <div class="circle-tile-heading green">
                                     <i class="fa fa-barcode fa-fw fa-3x"></i>
                                 </div>
@@ -75,17 +75,24 @@
                                     Tulosta tarra
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+                                    <br>
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/products" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
+		    <?php endif; ?>
 
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
+		    <?php
+			$criteria = new CDbCriteria;
+			$criteria->condition = " status=1 ";
+			$model_flight_all = Flights::model()->findAll($criteria);
+		    ?>
+
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?avoimet">
                                 <div class="circle-tile-heading yellow">
                                     <i class="fa fa-flag fa-fw fa-3x"></i>
                                 </div>
@@ -95,16 +102,23 @@
                                     Avoimet
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+                                    <?php echo count($model_flight_all); ?>
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/varasto?id='.$data->id.'" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?avoimet" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
 
+		    <?php
+			$criteria = new CDbCriteria;
+			$criteria->condition = " status=2 ";
+			$model_flight_all = Flights::model()->findAll($criteria);
+		    ?>
+
+
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?kerailyssa">
                                 <div class="circle-tile-heading blue">
                                     <i class="fa fa-gears fa-fw fa-3x"></i>
                                 </div>
@@ -114,16 +128,22 @@
                                     Keräilyssä
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+                                    <?php echo count($model_flight_all); ?>
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/varasto?id='.$data->id.'" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?kerailyssa" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
 
+		    <?php
+			$criteria = new CDbCriteria;
+			$criteria->condition = " status=3 ";
+			$model_flight_all = Flights::model()->findAll($criteria);
+		    ?>
+
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?keskeytetyt">
                                 <div class="circle-tile-heading red">
                                     <i class="fa fa-ban fa-fw fa-3x"></i>
                                 </div>
@@ -133,16 +153,22 @@
                                     Keskeytetyt
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+                                    <?php echo count($model_flight_all); ?>
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/varasto?id='.$data->id.'" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?keskeytetyt" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
 
+		    <?php
+			$criteria = new CDbCriteria;
+			$criteria->condition = " status=4 ";
+			$model_flight_all = Flights::model()->findAll($criteria);
+		    ?>
+
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?valmiit">
                                 <div class="circle-tile-heading green">
                                     <i class="fa fa-archive fa-fw fa-3x"></i>
                                 </div>
@@ -152,9 +178,9 @@
                                     Valmiit
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+                                    <?php echo count($model_flight_all); ?>
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/varasto?id='.$data->id.'" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?valmiit" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
