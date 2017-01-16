@@ -1,6 +1,6 @@
 <?php
-/* @var $this ProductsController */
-/* @var $model Products */
+/* @var $this FinishedCollectingLocationController */
+/* @var $model FinishedCollectingLocation */
 
 
 Yii::app()->clientScript->registerScript('search', "
@@ -22,12 +22,12 @@ $('.search-form form').submit(function(){
                     <div class="col-lg-12">
                         <div class="page-title">
                             <h1>
-                                Hallitse tuotteita <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/create'; ?>" data-toggle="tooltip" data-placement="right" title="Luo uusi tuote"><i class="fa fa-plus-square"></i></a>
+                                Hallitse sijainteja <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/FinishedCollectingLocation/create'; ?>" data-toggle="tooltip" data-placement="right" title="Luo uusi sijainti"><i class="fa fa-plus-square"></i></a>
                             </h1>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a>
                                 </li>
-                                <li class="active">Kaikki tuotteet</li>
+                                <li class="active">Kaikki sijainnit</li>
                             </ol>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ $('.search-form form').submit(function(){
                         <div class="portlet portlet-default">
                             <div class="portlet-heading">
                                 <div class="portlet-title">
-                                    <h4>Tuote lista</h4>
+                                    <h4>Sijainti lista</h4>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -66,7 +66,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'id',
 		//'time',
-		'name',
+		'location_name',
 		'barcode',
 		array(
 			'class'=>'CButtonColumn',

@@ -117,7 +117,7 @@ $('.search-form form').submit(function(){
                     <div class="col-lg-12">
                         <div class="page-title">
                             <h1>
-                                Lentot
+                                Lennot
                             </h1>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
@@ -142,7 +142,7 @@ $('.search-form form').submit(function(){
   <div class="portlet-body">
 
 
-<?php echo CHtml::link('Haku','#',array('class'=>'search-button')); ?>
+<?php echo CHtml::link('Haku','#',array('class'=>'search-button btn btn-default')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,

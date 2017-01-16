@@ -44,7 +44,7 @@ echo '
 <div class="row">
  <div class="col-sm-4">
   <div class="panel panel-info">
-   <div class="panel-heading">Yhteystiedot</div>
+   <div class="panel-heading">Yleiset tiedot</div>
    <div class="panel-body">';
 
 		 foreach($profileFields as $field) 

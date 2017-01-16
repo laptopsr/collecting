@@ -1,11 +1,12 @@
 <?php
-/* @var $this ProductsController */
-/* @var $model Products */
+/* @var $this AsiakkaatController */
+/* @var $model Asiakkaat */
 
 
 $arr = array(
 		'id',
-		'name',
+		//'time',
+		'location_name',
 		'barcode',
 
 	);
@@ -19,15 +20,13 @@ $arr = array(
                     <div class="col-lg-12">
                         <div class="page-title">
                             <h1>
-                                Tuotteet
+                                Sijainnit
                             </h1>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
-		    		<?php if(Yii::app()->user->isAdmin()) : ?>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">tuotteiden hallinta</a></li>
-                                <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/update?id='.$model->id; ?>">muokkaa tuotetta #<?php echo $model->id; ?></a></li>
-		    		<?php endif; ?>
-                                <li class="active">  tuote id #<?php echo $model->id; ?></li>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/admin'; ?>">sijaintien hallinta</a></li>
+                                <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/update?id='.$model->id; ?>">muokkaa sijaintia #<?php echo $model->id; ?></a></li>
+                                <li class="active">  sijainti #<?php echo $model->id; ?></li>
                             </ol>
                         </div>
                     </div>
@@ -59,9 +58,3 @@ $arr = array(
  </div>
 </div>
 <!-- /.portlet -->
-
-<br>
-
-<?php echo CHtml::button('Tulosta tarra', array('class'=>'btn btn-default tulosta')); ?>
-
-

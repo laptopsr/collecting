@@ -549,6 +549,15 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                     </li>
 		    <?php endif; ?>
 
+		    <?php if(Yii::app()->user->isAdmin()) : ?>
+                    <li>
+                        <a class="<?php if($curpage == 'index.php/FinishedCollectingLocation') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/FinishedCollectingLocation/admin'; ?>">
+                            <i class="fa fa-location-arrow"></i> Keläilyjen sijainnit
+                        </a>
+                    </li>
+		    <?php endif; ?>
+
+
 
 
 <?php /*
@@ -801,7 +810,8 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
     <!-- Logout Notification Box -->
     <div id="logout">
         <div class="logout-message">
-            <img class="img-circle img-logout" src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/profile-pic.jpg" alt="">
+          <!--  <img class="img-circle img-logout" src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/profile-pic.jpg" alt="">-->
+	<br>
             <h3>
                 <i class="fa fa-sign-out text-green"></i> Haluatko kirjautua ulos?
             </h3>

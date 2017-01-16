@@ -58,7 +58,7 @@
                                 <div class="circle-tile-number text-faded">
 				<br>
                                 </div>
-                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting" class="circle-tile-footer">Hallinta <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/collecting" class="circle-tile-footer"> Aloita <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

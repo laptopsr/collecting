@@ -1,16 +1,9 @@
 <?php
-/* @var $this ProductsController */
-/* @var $model Products */
-
-
-$arr = array(
-		'id',
-		'name',
-		'barcode',
-
-	);
+/* @var $this FinishedCollectingLocationController */
+/* @var $model FinishedCollectingLocation */
 
 ?>
+
 
 
 
@@ -19,15 +12,12 @@ $arr = array(
                     <div class="col-lg-12">
                         <div class="page-title">
                             <h1>
-                                Tuotteet
+                                Sijainnit
                             </h1>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
-		    		<?php if(Yii::app()->user->isAdmin()) : ?>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">tuotteiden hallinta</a></li>
-                                <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/update?id='.$model->id; ?>">muokkaa tuotetta #<?php echo $model->id; ?></a></li>
-		    		<?php endif; ?>
-                                <li class="active">  tuote id #<?php echo $model->id; ?></li>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/admin'; ?>">sijaintien hallinta</a></li>
+                                <li class="active">  sijainti #<?php echo $model->id; ?></li>
                             </ol>
                         </div>
                     </div>
@@ -37,31 +27,21 @@ $arr = array(
                 <!-- end PAGE TITLE ROW -->
 
 
+
 <div class="portlet portlet-default">
   <div class="portlet-heading">
       <div class="portlet-title">
-         <h4></h4>
+         <h4>Muokkaa sijaintia #<?php echo $model->id; ?></h4>
       </div>
     <div class="clearfix"></div>
   </div>
   <div class="portlet-body">
 
-<?php 
-   $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=> $arr,
-   ));
 
-?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 
 
    </div>
  </div>
 </div>
 <!-- /.portlet -->
-
-<br>
-
-<?php echo CHtml::button('Tulosta tarra', array('class'=>'btn btn-default tulosta')); ?>
-
-

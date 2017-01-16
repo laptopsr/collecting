@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "products".
+ * This is the model class for table "finished_collecting_location".
  *
- * The followings are the available columns in table 'products':
+ * The followings are the available columns in table 'finished_collecting_location':
  * @property integer $id
  * @property string $time
- * @property string $name
+ * @property string $location_name
  * @property string $barcode
  */
-class Products extends CActiveRecord
+class FinishedCollectingLocation extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Products the static model class
+	 * @return FinishedCollectingLocation the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +26,7 @@ class Products extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'products';
+		return 'finished_collecting_location';
 	}
 
 	/**
@@ -37,11 +37,11 @@ class Products extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, barcode', 'required'),
-			array('name, barcode', 'length', 'max'=>255),
+			array('location_name, barcode', 'required'),
+			array('location_name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, name, barcode', 'safe', 'on'=>'search'),
+			array('id, time, location_name, barcode', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,7 +64,7 @@ class Products extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'time' => 'Time',
-			'name' => 'Tuotteen nimi',
+			'location_name' => 'Sijainnin nimi',
 			'barcode' => 'Viivakoodi',
 		);
 	}
@@ -82,7 +82,7 @@ class Products extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('time',$this->time,true);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('location_name',$this->location_name,true);
 		$criteria->compare('barcode',$this->barcode,true);
 
 		return new CActiveDataProvider($this, array(

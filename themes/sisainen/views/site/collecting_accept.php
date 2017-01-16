@@ -10,7 +10,7 @@
                         <div class="page-title">
 			 <center>
                             <h1>
-                                KERÄILY <?php if(isset($model->flight_no)) echo $model->flight_no; ?> VALMIS. ANNA LOPPUSIJOITUS.
+                                KERÄILY <?php if(isset($model->flight_no)) echo $model->flight_no; ?> VALMIS.<br> ANNA KOHDEOSOITE LUKEMALLA KOHTEEN VIIVAKOODI.
                             </h1>
 			 </center>
                         </div>

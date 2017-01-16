@@ -37,7 +37,7 @@ class Status extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('time, name, user_creator_id', 'required'),
+			array('name', 'required'),
 			array('user_creator_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -64,9 +64,9 @@ class Status extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'time' => 'Time',
-			'name' => 'Name',
-			'user_creator_id' => 'User Creator',
+			'time' => 'Luonti aika',
+			'name' => 'Nimi',
+			'user_creator_id' => 'Lisääjän nimi',
 		);
 	}
 
