@@ -68,9 +68,12 @@ $('.search-form form').submit(function(){
 		//'time',
 		'name',
 		'user_creator_id',
+		// <-- Painikkeet
 		array(
-			'class'=>'CButtonColumn',
-		),
+        		'header'  => '',
+			'value'=>array($this,'painikkeet'),
+    		),
+		//     Painikkeet -->
 	),
 )); ?>
 

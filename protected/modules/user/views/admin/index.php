@@ -90,9 +90,12 @@ $('.search-form form').submit(function(){
 			'value'=>'User::itemAlias("UserStatus",$data->status)',
 			'filter' => User::itemAlias("UserStatus"),
 		),
+		// <-- Painikkeet
 		array(
-			'class'=>'CButtonColumn',
-		),
+        		'header'  => '',
+			'value'=>array($this,'painikkeet'),
+    		),
+		//     Painikkeet -->
 	),
 )); ?>
 

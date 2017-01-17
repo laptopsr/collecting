@@ -32,9 +32,12 @@ $('.search-form form').submit(function(){
 		),
 		'destination',
 		'date',
+		// <-- Painikkeet
 		array(
-			'class'=>'CButtonColumn',
-		)
+        		'header'  => '',
+			'value'=>array($this,'painikkeet'),
+    		),
+		//     Painikkeet -->
 		);
 	}
 
@@ -55,9 +58,12 @@ $('.search-form form').submit(function(){
 			'value'=>array($this,'etuSukunimi'),
 		),
 		'collecting_start',
+		// <-- Painikkeet
 		array(
-			'class'=>'CButtonColumn',
-		)
+        		'header'  => '',
+			'value'=>array($this,'painikkeet'),
+    		),
+		//     Painikkeet -->
 		);
 	}
 
@@ -79,9 +85,12 @@ $('.search-form form').submit(function(){
 		),
 		'collecting_start',
 		'keskeytys_syy',
+		// <-- Painikkeet
 		array(
-			'class'=>'CButtonColumn',
-		)
+        		'header'  => '',
+			'value'=>array($this,'painikkeet'),
+    		),
+		//     Painikkeet -->
 		);
 	}
 
@@ -104,9 +113,12 @@ $('.search-form form').submit(function(){
 		'collecting_start',
 		'collecting_end',
 		'collecting_totaltime',
+		// <-- Painikkeet
 		array(
-			'class'=>'CButtonColumn',
-		)
+        		'header'  => '',
+			'value'=>array($this,'painikkeet'),
+    		),
+		//     Painikkeet -->
 		);
 	}
 ?>
@@ -149,6 +161,7 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
+<div class="table-responsive">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'flights-grid',
 	'dataProvider'=>$model->search(),
@@ -159,6 +172,8 @@ $('.search-form form').submit(function(){
 
 	'columns'=>$sarakkeet
 )); ?>
+</div>
+
 
    </div>
  </div>

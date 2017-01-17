@@ -237,4 +237,27 @@ class FlightsController extends Controller
 		   	   return sprintf('%02d:%02d', $val/3600, ($val % 3600)/60);
 	}
 
+
+	protected function painikkeet($data)
+	{
+
+
+		echo '<div class="form-inline">';
+		echo '<div class="form-group" style="margin-right: 7px;">';
+		echo CHtml::link('<i class="fa fa-eye"></i>', '#', array(
+		'submit'=>array('view', "id"=>$data->id), 
+		));
+		echo '</div><div class="form-group" style="margin-right: 7px;">';
+		echo CHtml::link('<i class="fa fa-pencil-square-o"></i>', '#', array(
+		'submit'=>array('update', "id"=>$data->id), 
+		));
+		echo '</div><div class="form-group">';
+		echo CHtml::link('<i class="fa fa-trash-o"></i>', '#', array(
+		'submit'=>array('delete', "id"=>$data->id, "hyppa"=>"asiakkaanTyot/admin"),
+		'confirm'=>'Haluatko varmaasti poista?',
+		));
+		echo '</div></div>';
+	
+	}
+
 }
