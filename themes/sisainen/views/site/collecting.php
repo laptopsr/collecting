@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 
 
-var step = 2; // 21 on 5 minuttia
+var step = 21; // 21 on 5 minuttia
 var count = step;
 minuttinLaskuri();
 function minuttinLaskuri()
