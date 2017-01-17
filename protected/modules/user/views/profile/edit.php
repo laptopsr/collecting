@@ -14,7 +14,31 @@ $this->menu=array(
     array('label'=>UserModule::t('Kirjaudu ulos'), 'url'=>array('/user/logout')),
 );
 */
-?><h1><?php echo UserModule::t('Muokkaa profiilia'); ?></h1>
+?>
+
+
+
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                Muokkaa profiilia 
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a>
+                                </li>
+                                <li class="active">profiili</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE ROW -->
+
+
+
 
 
 <?php if(Yii::app()->user->hasFlash('profileMessage')): ?>
@@ -38,14 +62,19 @@ $this->menu=array(
 		$profileFields=$profile->getFields();
 		if ($profileFields) {
 
-echo '<div class="row form">';
+?>
 
-echo '
-<div class="row">
- <div class="col-sm-4">
-  <div class="panel panel-info">
-   <div class="panel-heading">Yleiset tiedot</div>
-   <div class="panel-body">';
+<div class="portlet portlet-default">
+  <div class="portlet-heading">
+      <div class="portlet-title">
+         <h4>Profiili</h4>
+      </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="portlet-body">
+   <div class="row">
+    <div class="col-sm-4">
+<?php
 
 		 foreach($profileFields as $field) 
 		 {
@@ -53,20 +82,13 @@ echo '
 			$field->varname == 'lastname'
 			or $field->varname == 'firstname'
 		 ){
-		    echo '<div class="row" id="My_'.$field->varname.'">';
+		    echo '<div class="" id="My_'.$field->varname.'">';
 			lomake($profile,$field,$form);
 		    echo '</div>';
 		 }
 
 		 }
-echo '
-   </div>
-  </div>
- </div>
-</div>
-';
 
-echo '</div>'; //form
 		}
 
 
@@ -96,29 +118,33 @@ function lomake($profile,$field,$form){
 }
 ?>
 
-<div class="row form">
-<div class="col-sm-4">
-	<div class="row">
+
+	<div class="">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo CHtml::link('Vaihda salasana','changepassword',array('class'=>'btn btn-primary btn-block')) ?>
 	<br>
-		<?php echo CHtml::submitButton($model->isNewRecord ? UserModule::t('Luo') : UserModule::t('Tallenna'),array('class'=>'btn btn-primary btn-block')); ?>
+	<div class="">
+		<p><?php echo CHtml::link('Vaihda salasana','changepassword',array('class'=>'link')) ?></p>
+	<br>
+		<?php echo CHtml::submitButton($model->isNewRecord ? UserModule::t('Luo') : UserModule::t('Tallenna'),array('class'=>'btn btn-default btn-block')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
+
+
+    </div>
+   </div>
  </div>
-</div><!-- form -->
+</div>
+<!-- /.portlet -->
 
 
 
