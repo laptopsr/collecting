@@ -129,7 +129,7 @@ $this->menu=array(
 	<?php 
 		if(UserModule::isAdmin())
 		echo CHtml::link('Hallitse profiileja',Yii::app()->request->baseUrl.'/index.php/user/admin',array('class'=>'btn btn-block btn-default'));
-		echo CHtml::link('Listaa profiilit',Yii::app()->request->baseUrl.'/index.php/user',array('class'=>'btn btn-block btn-default'));
+		//echo CHtml::link('Listaa profiilit',Yii::app()->request->baseUrl.'/index.php/user',array('class'=>'btn btn-block btn-default'));
 
 	?>
  </div>

@@ -22,6 +22,10 @@
                 <div class="row">
 
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
+		    <?php
+			$criteria = new CDbCriteria;
+			$model_user_all = User::model()->findAll($criteria);
+		    ?>
                     <div class="col-lg-2 col-sm-6">
                         <div class="circle-tile">
                             <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/user/admin">
@@ -34,7 +38,7 @@
                                     Työntekijät
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    0
+                                    <?php echo count($model_user_all); ?>
                                     <span id="sparklineA"></span>
                                 </div>
                                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/user/admin" class="circle-tile-footer">Kaikki käyttäjät <i class="fa fa-chevron-circle-right"></i></a>

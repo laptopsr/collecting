@@ -110,12 +110,19 @@ class FlightsController extends Controller
 			if($model->save())
 			{
 
-
-
 				$criteria = new CDbCriteria;
 				$criteria->order = " id ASC ";
 				$criteria->condition = " flight_no_id='".$model->id."' ";
 				CollectorRows::model()->updateAll(array('status'=>$model->status), $criteria);
+
+				if($model->status == 1)
+				{
+					Flights::model()->updateByPk($model->id, array(
+						'keskeytys_syy'=>'',
+						'collector_id'=>0,
+						'collecting_start'=>''
+					));
+				}
 
 				$this->redirect(array('//site/index'));
 			}

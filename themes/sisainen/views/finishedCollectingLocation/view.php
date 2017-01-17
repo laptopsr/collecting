@@ -58,3 +58,7 @@ $arr = array(
  </div>
 </div>
 <!-- /.portlet -->
+
+<br>
+
+<?php echo CHtml::button('Tulosta tarra', array('class'=>'btn btn-default tulosta')); ?>

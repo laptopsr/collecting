@@ -116,10 +116,14 @@ $(document).ready(function(){
            data: { barcode : $('#barcode').val() },
            success: function(data){
 		data = JSON.parse(data);
-		//console.log(data);
+		console.log(data);
 		if(data['OK'])
 		{
 			window.location.href="collecting";
+		} 
+		if(data['ERROR'])
+		{
+			alert(data['ERROR']);
 		} 
 
            }

@@ -132,7 +132,7 @@ function lomake($profile,$field,$form){
 	</div>
 	<br>
 	<div class="">
-		<p><?php echo CHtml::link('Vaihda salasana','changepassword',array('class'=>'link')) ?></p>
+		<p><?php echo CHtml::link('Vaihda salasana','changepassword',array('class'=>'btn btn-default btn-block')) ?></p>
 	<br>
 		<?php echo CHtml::submitButton($model->isNewRecord ? UserModule::t('Luo') : UserModule::t('Tallenna'),array('class'=>'btn btn-default btn-block')); ?>
 	</div>

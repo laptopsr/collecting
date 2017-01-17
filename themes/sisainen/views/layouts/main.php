@@ -58,6 +58,25 @@
 <?php
 $curpage = Yii::app()->getController()->getAction()->controller->id;
 $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id;
+
+		// <-- Check varatut collector sivut
+		$criteria = new CDbCriteria;
+		$criteria->condition = " 
+			status=1 
+			AND user_is_collector_page!=0
+			AND (user_is_collector_page_started + INTERVAL 5 MINUTE) < NOW() 
+		";
+		$onkoVarattu = Flights::model()->find($criteria);
+		if(isset($onkoVarattu->id))
+		{
+			Flights::model()->updateByPk($onkoVarattu->id, 
+			array(
+				'user_is_collector_page_started'=>'0000-00-00 00:00:00',
+				'user_is_collector_page'=>0
+			));
+		}
+		//    Check varatut collector sivut -->
+
 ?>
 
 
@@ -505,25 +524,25 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                         <ul class="collapse <?php if($curpage == 'asiakkaat/index' or $curpage == 'asiakkaat/create' or $curpage == 'asiakkaat/update') echo 'in'; ?> nav" id="asiakkaat">
 
                     	 <li>
-	                        <a class="<?php if($curpage == 'asiakkaat/create') echo 'active'; ?>" href="#">
+	                        <a class="<?php if($curpage == 'asiakkaat/create') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?avoimet">
 	                            <i class="fa fa-flag"></i> Avoimet
 	                        </a>
 	                 </li>
 
                     	 <li>
-	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="#">
+	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?kerailyssa">
 	                            <i class="fa fa-gears"></i> Keräilyssä
 	                        </a>
 	                 </li>
 
                     	 <li>
-	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="#">
+	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?keskeytetyt">
 	                            <i class="fa fa-ban"></i> Keskeytetyt
 	                        </a>
 	                 </li>
 
                     	 <li>
-	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="#">
+	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?valmiit">
 	                            <i class="fa fa-archive"></i> Valmiit
 	                        </a>
 	                 </li>

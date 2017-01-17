@@ -7,11 +7,68 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
+?>
 
-$arr = array(
+
+<?php
+	$sivu = '';
+	$translate = '';
+	if($model->status == 1 )
+	{
+		$sivu = 'avoimet';
+		$translate = 'Avoimet';
+
+		// <-- sarakkeet
+		$arr = array(
 		'id',
-		'time',
-		'status',
+		'flight_no',
+		'destination',
+		'date',
+		);
+		//   sarakkeet -->
+
+	}
+	if($model->status == 2 )
+	{
+		$sivu = 'kerailyssa';
+		$translate = 'Keräilyssä';
+
+		// <-- sarakkeet
+		$arr = array(
+		'id',
+		'flight_no',
+		'destination',
+		'date',
+		'collector_id',
+		'collecting_start',
+		);
+		//   sarakkeet -->
+	}
+	if($model->status == 3 )
+	{
+		$sivu = 'keskeytetyt';
+		$translate = 'Keskeytetyt';
+
+		// <-- sarakkeet
+		$arr = array(
+		'id',
+		'flight_no',
+		'destination',
+		'date',
+		'collector_id',
+		'collecting_start',
+		'keskeytys_syy',
+		);
+		//   sarakkeet -->
+	}
+	if($model->status == 4 )
+	{
+		$sivu = 'valmiit';
+		$translate = 'Valmiit';
+
+		// <-- sarakkeet
+		$arr = array(
+		'id',
 		'flight_no',
 		'destination',
 		'date',
@@ -19,11 +76,24 @@ $arr = array(
 		'collecting_start',
 		'collecting_end',
 		'collecting_totaltime',
+		'barcode_kohde_osoite',
+		);
+		//   sarakkeet -->
+	}
 
-	);
+	// <-- Etusukunini muutos
+	$model->collector_id = $this->etuSukunimi($model);
+	// <-- Etusukunini muutos
+
+	// <-- Barcoden nimetys muutos
+	$checkOnko = FinishedCollectingLocation::model()->find(" barcode='".$model->barcode_kohde_osoite."' ");
+	if(isset($checkOnko->id))
+	{
+		$model->barcode_kohde_osoite = $checkOnko->location_name;
+	}
+	// <-- Barcoden nimetys muutos
 
 ?>
-
 
 
                 <!-- begin PAGE TITLE ROW -->
@@ -35,7 +105,7 @@ $arr = array(
                             </h1>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/flights/admin'; ?>">Lentorivien hallinta</a></li>
+                                <li class="active"> <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/flights/admin?'.$sivu; ?>"><?php echo $translate; ?></a></li>
                                 <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/flights/update?id='.$model->id; ?>">muokkaa lentoriviä #<?php echo $model->id; ?></a></li>
                                 <li class="active">  lentorivi #<?php echo $model->id; ?></li>
                             </ol>

@@ -43,13 +43,13 @@ class Flights extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('flight_no', 'required'),
-			array('status, collector_id', 'numerical', 'integerOnly'=>true),
-			array('flight_no, destination', 'length', 'max'=>255),
-			array('date, collecting_start, collecting_end, collecting_totaltime', 'length', 'max'=>50),
+			array('status, collector_id, user_is_collector_page', 'numerical', 'integerOnly'=>true),
+			array('flight_no, destination, 	barcode_kohde_osoite', 'length', 'max'=>255),
+			array('date, collecting_start, collecting_end, collecting_totaltime, user_is_collector_page_started', 'length', 'max'=>50),
 			array('keskeytys_syy', 'length', 'max'=>5000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, status, flight_no, destination, date, collector_id, collecting_start, collecting_end, collecting_totaltime', 'safe', 'on'=>'search'),
+			array('id, time, status, flight_no, destination, date, collector_id, collecting_start, collecting_end, collecting_totaltime, barcode_kohde_osoite, user_is_collector_page', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,6 +81,7 @@ class Flights extends CActiveRecord
 			'collecting_end' => 'Keräily päättyi',
 			'keskeytys_syy' => 'Keskeytyksen syy',
 			'collecting_totaltime' => 'Keräilyaika',
+			'barcode_kohde_osoite' => 'Keräilyn sijainti',
 		);
 	}
 

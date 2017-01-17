@@ -161,11 +161,27 @@ class SiteController extends Controller
 
 	public function actionCollecting()
 	{
+
+
+		// <-- Olenko ma kerailyssa
+		$criteria = new CDbCriteria;
+		$criteria->order = " id ASC "; 
+		$criteria->limit = 1; // viimeinen 1 rivi
+		$criteria->condition = " status=2 AND collector_id='".Yii::app()->user->id."' ";
+		$checkKerailyssa = Flights::model()->find($criteria);
+		if(isset($checkKerailyssa->id))
+			$this->redirect('collecting_product?id='.$checkKerailyssa->id);
+		//    Olenko ma kerailyssa -->
+	
+
 		// <-- Get last row from Flights
 		$criteria = new CDbCriteria;
 		$criteria->order = " id DESC "; 
 		$criteria->limit = 1; // viimeinen 1 rivi
-		$criteria->condition = " status=1 ";
+		$criteria->condition = " 
+			status=1 
+			AND ( user_is_collector_page=0 OR user_is_collector_page='".Yii::app()->user->id."' )
+		";
 		$lastRowModel = Flights::model()->find($criteria);
 		//    Get last row from Flights -->
 
@@ -175,6 +191,11 @@ class SiteController extends Controller
 			$criteria = new CDbCriteria;
 			$criteria->condition = " flight_no_id='".$lastRowModel->id."' ";
 			$cr = CollectorRows::model()->findAll($criteria);
+
+			Flights::model()->updateByPk($lastRowModel->id, array(
+				'user_is_collector_page'=>Yii::app()->user->id,
+				'user_is_collector_page_started'=>date("Y-m-d H:i:s")
+			));
 		}
 
 		$this->render('collecting', array(
@@ -305,6 +326,12 @@ class SiteController extends Controller
 
 	public function actionInsert_barcode_kohde_osoite($id)
 	{
+		$checkOnko = FinishedCollectingLocation::model()->find(" barcode='".$_POST['barcode']."' ");
+		if(!isset($checkOnko->id))
+		{
+			echo json_encode(array('ERROR'=>'Sijaintia ei tunneta. Tarkista sijainti tai lisää uusi.'));
+			exit;
+		}
 
 		$model = Flights::model()->findByPk($id);
 
@@ -318,12 +345,13 @@ class SiteController extends Controller
 			$collecting_totaltime = $this->sprint($result);
 		}
 
-		Flights::model()->updateByPk($id, array(
-			'insert_barcode_kohde_osoite'=>$_POST['barcode'],
+		$update = Flights::model()->updateByPk($id, array(
+			'barcode_kohde_osoite'=>$_POST['barcode'],
 			'status'=>4,
 			'collecting_end'=>$collecting_end,
 			'collecting_totaltime'=>$collecting_totaltime
 		));
+
 		echo json_encode(array('OK'=>'Barcode lisätty.'));
 		
 	}

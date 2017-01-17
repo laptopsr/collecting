@@ -6,6 +6,8 @@
 	}
 ?>
 
+<!--<p><div id="countTimer"></div></p>-->
+
 <div class="row">
  <div class="col-sm-4 col-sm-offset-4">
                 <!-- begin PAGE TITLE ROW -->
@@ -73,6 +75,26 @@ $(document).ready(function(){
 		return false;
 	}
  });
+
+
+
+
+var step = 2; // 21 on 5 minuttia
+var count = step;
+minuttinLaskuri();
+function minuttinLaskuri()
+{
+		count += -1;
+		var time = count*15;
+		var minutes = "0" + Math.floor(time / 60);
+		var seconds = "0" + (time - minutes * 60);
+		jaljella =  minutes.substr(-2) + ":" + seconds.substr(-2);
+		$('#countTimer').text('Aikajäljellä: '+jaljella);
+		if(count < 1)
+		window.location.href="index"
+}
+setInterval(minuttinLaskuri, "15000");
+
 
 
 });

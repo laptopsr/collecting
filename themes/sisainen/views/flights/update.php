@@ -26,7 +26,6 @@
 		$sivu = 'valmiit';
 		$translate = 'Valmiit';
 	}
-
 ?>
 
 

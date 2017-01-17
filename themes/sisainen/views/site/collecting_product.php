@@ -57,6 +57,13 @@
 
 <div class="row">
  <div class="col-sm-4 col-sm-offset-4">
+  <?php echo CHtml::link('Takaisin', Yii::app()->request->baseUrl.'/index.php/site/index', array('class'=>'btn btn-lg btn-default btn-block')); ?>
+ </div>
+</div>
+<br>
+
+<div class="row">
+ <div class="col-sm-4 col-sm-offset-4">
   <button class="btn btn-lg btn-default btn-block" data-toggle="collapse" data-target="#Keskeyta"> Keskeytä <i class="caret"></i></button>
   <div class="collapse" id="Keskeyta">
   <p>
