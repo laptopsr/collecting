@@ -162,8 +162,8 @@ return array(
                 'baseUrl'=>'js/',
                 'js'=>array(
 		    'jquery-1.11.2.min.js',
-		    'jquery-ui.min.js',
-		    'datepicker-fi.js',	
+		    //'jquery-ui.min.js',
+		    //'datepicker-fi.js',	
 		),
             ),
             'bootstrapJS'=>array(                       //set others js libraries
@@ -236,6 +236,7 @@ return array(
 		),
 		
 		'errorHandler'=>array(
+
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),

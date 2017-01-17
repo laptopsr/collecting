@@ -46,6 +46,7 @@
   $curpage = Yii::app()->getController()->getAction()->controller->id;
   $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id;
 
+  Yii::app()->clientScript->registerPackage('jquery');
   //Yii::app()->clientScript->registerPackage('bootstrapJS');
   //Yii::app()->clientScript->registerPackage('bootstrapCSS');
 ?>
@@ -804,7 +805,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
 
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <?php /*<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.11.2.min.js"></script>*/?>
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/bootstrap/bootstrap.min.js"></script>
 
         <!-- begin MAIN PAGE CONTENT -->
