@@ -253,7 +253,7 @@ class FlightsController extends Controller
 		));
 		echo '</div><div class="form-group">';
 		echo CHtml::link('<i class="fa fa-trash-o"></i>', '#', array(
-		'submit'=>array('delete', "id"=>$data->id, "hyppa"=>"asiakkaanTyot/admin"),
+		'submit'=>array('delete', "id"=>$data->id),
 		'confirm'=>'Haluatko varmaasti poista?',
 		));
 		echo '</div></div>';

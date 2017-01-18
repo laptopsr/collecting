@@ -294,7 +294,7 @@ span.required{
 }
 
 .navbar-top .dropdown-user {
-    left: -80px;
+    /*left: -80px;*/
     margin: 0;
     min-width: 200px;
 }

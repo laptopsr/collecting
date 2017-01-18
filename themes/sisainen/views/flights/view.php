@@ -129,6 +129,7 @@ $this->breadcrumbs=array(
 <?php 
    $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
+	'cssFile' => Yii::app()->request->baseUrl.'/css/view.css',
 	'attributes'=> $arr,
    ));
 

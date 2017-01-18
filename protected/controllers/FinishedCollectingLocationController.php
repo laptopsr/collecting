@@ -64,6 +64,16 @@ class FinishedCollectingLocationController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		if(isset($_GET['pdf']))
+		{
+	          $html2pdf = Yii::app()->ePdf->HTML2PDF('P', 'A4', 'en');
+		  $html2pdf->setDefaultFont('Arial');
+	          $html2pdf->WriteHTML($this->renderPartial('view_pdf',array('model'=>$this->loadModel($id),'tulosta'=>true),true));
+	          $html2pdf->Output();
+
+		}
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -199,7 +209,7 @@ class FinishedCollectingLocationController extends Controller
 		));
 		echo '</div><div class="form-group">';
 		echo CHtml::link('<i class="fa fa-trash-o"></i>', '#', array(
-		'submit'=>array('delete', "id"=>$data->id, "hyppa"=>"asiakkaanTyot/admin"),
+		'submit'=>array('delete', "id"=>$data->id),
 		'confirm'=>'Haluatko varmaasti poista?',
 		));
 		echo '</div></div>';

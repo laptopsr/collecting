@@ -13,7 +13,6 @@ $arr = array(
 ?>
 
 
-
                 <!-- begin PAGE TITLE ROW -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -40,28 +39,42 @@ $arr = array(
 <div class="portlet portlet-default">
   <div class="portlet-heading">
       <div class="portlet-title">
-         <h4></h4>
+         <h4><?php echo $model->name; ?></h4>
       </div>
     <div class="clearfix"></div>
   </div>
   <div class="portlet-body">
+   <div class="table-responsive" style="border:none">
+	
+	<?php 
+	   $this->widget('zii.widgets.CDetailView', array(
+		'data'=>$model,
+		'cssFile' => Yii::app()->request->baseUrl.'/css/view.css',
+		'attributes'=> $arr,
+	   ));
 
-<?php 
-   $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=> $arr,
-   ));
+	?>
+	<br>
+	<p>
+	<?php
+	$viivakoodi = $model->barcode;
+	echo '<img src="'.Yii::app()->getBaseUrl(true) .'/barcode_generator/index.php?viivakoodi='.$viivakoodi.'">';
+	?>
+	</p>
 
-?>
-
-
-   </div>
+	<br>
+	<p><?php echo CHtml::button('Tulosta tarra', array('submit'=>array('view', "id"=>$model->id, "pdf"=>true), 'class'=>'btn btn-default')); ?></p>
+  </div>
  </div>
 </div>
 <!-- /.portlet -->
 
-<br>
 
-<?php echo CHtml::button('Tulosta tarra', array('class'=>'btn btn-default tulosta')); ?>
+
+
+
+
+
+
 
 

@@ -7,7 +7,7 @@
 ?>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
                 <!-- begin PAGE TITLE ROW -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -33,7 +33,7 @@
 <br>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('OK', Yii::app()->request->baseUrl.'/index.php/site/collecting_product_for_next?row_id='.$model->id.'&flights_id='.$model->flight_no_id, array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
@@ -41,7 +41,7 @@
 
 <?php if($takaisin) : ?>
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('Takaisin', Yii::app()->request->baseUrl.'/index.php/site/collecting_product?id='.$model->flight_no_id, array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
@@ -49,7 +49,7 @@
 <?php endif; ?>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <button class="btn btn-lg btn-default btn-block" data-toggle="collapse" data-target="#Keskeyta"> Keskeytä <i class="caret"></i></button>
   <div class="collapse" id="Keskeyta">
   <p>

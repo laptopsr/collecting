@@ -29,15 +29,15 @@ class ProductsController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'view_pdf'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -64,6 +64,16 @@ class ProductsController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		if(isset($_GET['pdf']))
+		{
+	          $html2pdf = Yii::app()->ePdf->HTML2PDF('P', 'A4', 'en');
+		  $html2pdf->setDefaultFont('Arial');
+	          $html2pdf->WriteHTML($this->renderPartial('view_pdf',array('model'=>$this->loadModel($id),'tulosta'=>true),true));
+	          $html2pdf->Output();
+
+		}
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -199,7 +209,7 @@ class ProductsController extends Controller
 		));
 		echo '</div><div class="form-group">';
 		echo CHtml::link('<i class="fa fa-trash-o"></i>', '#', array(
-		'submit'=>array('delete', "id"=>$data->id, "hyppa"=>"asiakkaanTyot/admin"),
+		'submit'=>array('delete', "id"=>$data->id),
 		'confirm'=>'Haluatko varmaasti poista?',
 		));
 		echo '</div></div>';

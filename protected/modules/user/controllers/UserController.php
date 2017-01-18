@@ -86,7 +86,7 @@ class UserController extends Controller
 					$profile->user_id=$model->id;
 					$profile->save();
 				}
-				$this->redirect(array('//user'));
+				$this->redirect(array('//user/admin'));
 			} else $profile->validate();
 		}
 

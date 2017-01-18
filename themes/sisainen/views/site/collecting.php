@@ -32,7 +32,7 @@
 <br>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('OK', Yii::app()->request->baseUrl.'/index.php/site/collecting_product?id='.$lastRowModel->id, array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
@@ -40,13 +40,13 @@
 <br>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('Takaisin', Yii::app()->request->baseUrl.'/index.php/site/index', array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
 <br>
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <button class="btn btn-lg btn-default btn-block" data-toggle="collapse" data-target="#Keskeyta"> Keskeytä <i class="caret"></i></button>
   <div class="collapse" id="Keskeyta">
   <p>

@@ -3,7 +3,7 @@
 ?>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-12">
                 <!-- begin PAGE TITLE ROW -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -25,40 +25,31 @@
 <br>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
-  <?php echo CHtml::link('Lue viivakoodi', Yii::app()->request->baseUrl.'/index.php/site/index', array('class'=>'btn btn-lg btn-default btn-block')); ?>
- </div>
-</div>
-<br>
-<div class="row">
- <div class="col-sm-4 col-sm-offset-4">
-  <button class="btn btn-lg btn-default btn-block" data-toggle="collapse" data-target="#syotaItse"> Syötä viivakoodi itse <i class="caret"></i></button>
-  <div class="collapse" id="syotaItse">
-  <p>
+ <div class="col-sm-6 col-sm-offset-3">
+
 	<form action="#" method="POST">
 	    <div class="input-group">
 	      <input type="hidden" class="form-control" id="this_id" value="<?php echo $model->id; ?>">
-	      <input type="text" class="form-control" id="barcode" placeholder="Kirjoita viivakoodi tähän">
+	      <input type="text" class="form-control input-lg" id="barcode" placeholder="Kirjoita tai skanna viivakoodi tähän" autofocus>
 	      <span class="input-group-btn">
-	        <button class="btn btn-default checkBarCode" type="button">OK</button>
+	        <button class="btn btn-default btn-lg checkBarCode" type="button">OK</button>
 	      </span>
 	    </div>
 	</form>
-  </p>
-  </div>
+
  </div>
 </div>
 
 <br>
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('Takaisin', Yii::app()->request->baseUrl.'/index.php/site/collecting_product_quantity?id='.$row_id, array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
 <br>
 <div class="row">
- <div class="col-sm-4 col-sm-offset-4">
+ <div class="col-sm-6 col-sm-offset-3">
   <button class="btn btn-lg btn-default btn-block" data-toggle="collapse" data-target="#Keskeyta"> Keskeytä <i class="caret"></i></button>
   <div class="collapse" id="Keskeyta">
   <p>
@@ -66,7 +57,7 @@
 	      <input type="hidden" class="form-control" name="flight_id" value="<?php echo $model->id; ?>">
 	      <textarea class="form-control" name="keskeytys_syy" id="keskeytys_syy" placeholder="Kirjoita syy tähän"></textarea>
 	      <br>
-	      <button type="submit" class="btn btn-default btn-block" type="button">Hyväksy keskeytys</button>
+	      <button type="submit" class="btn btn-default btn-lg btn-block" type="button">Hyväksy keskeytys</button>
 	</form>
   </p>
  </div>
