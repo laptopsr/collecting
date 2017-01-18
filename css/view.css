@@ -30,13 +30,11 @@ table.detail-view th
 table.detail-view tr.odd
 {
      background:#e0e7e8;
-        //background: black;
 }
 
 table.detail-view tr.even
 {
      background:#F8F8F8;
-        //background: black;
 }
 
 table.detail-view tr.odd th
