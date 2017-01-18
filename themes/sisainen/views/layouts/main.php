@@ -206,22 +206,16 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                             <i class="fa fa-dashboard"></i> Etusivu
                         </a>
                     </li>
-		    <?php endif; ?>
                     <!-- end DASHBOARD LINK -->
 
 
-		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
-                        <a class="<?php if($curpage == 'index.php/user/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin'; ?>">
+                        <a class="<?php if($curpage == 'admin/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin'; ?>">
                             <i class="fa fa-users"></i> Työntekijät
                         </a>
                     </li>
-		    <?php endif; ?>
-
-
-		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li class="panel">
-                        <a class="<?php if($curpage == 'asiakkaat/index' or $curpage == 'asiakkaat/create' or $curpage == 'asiakkaat/update') echo 'active'; ?>" href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#asiakkaat">
+                        <a class="<?php if($curpage == 'flights/admin') echo 'active'; ?>" href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#asiakkaat">
                             <i class="fa fa-shopping-cart"></i> Keräily <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="collapse <?php if($curpage == 'asiakkaat/index' or $curpage == 'asiakkaat/create' or $curpage == 'asiakkaat/update') echo 'in'; ?> nav" id="asiakkaat">
@@ -251,31 +245,62 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 	                 </li>
                         </ul>
                     </li>
-		    <?php endif; ?>
-
-
-		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
-                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">
+                        <a class="<?php if($curpage == 'products/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">
                             <i class="fa fa-barcode"></i> Tulosta tarra
                         </a>
                     </li>
-		    <?php endif; ?>
-
-
-		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
-                        <a class="<?php if($curpage == 'index.php/status') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
+                        <a class="<?php if($curpage == 'status/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
                             <i class="fa fa-users"></i> Statukset
                         </a>
                     </li>
-		    <?php endif; ?>
-
-		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
-                        <a class="<?php if($curpage == 'index.php/FinishedCollectingLocation') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/FinishedCollectingLocation/admin'; ?>">
+                        <a class="<?php if($curpage == 'finishedCollectingLocation/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/admin'; ?>">
                             <i class="fa fa-location-arrow"></i> Keläilyjen sijainnit
                         </a>
+                    </li>
+                    <li class="panel">
+                        <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#teemaus">
+                            <i class="fa fa-eyedropper"></i> Teemaus <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse nav" id="teemaus">
+                    	 <li>
+	                        <a class="link changePortlet" portlet="default">
+	                            <i class="fa fa-eyedropper"></i> Black
+	                        </a>
+	                 </li>
+                    	 <li>
+	                        <a class="link changePortlet" portlet="info">
+	                            <i class="fa fa-eyedropper"></i> Info
+	                        </a>
+	                 </li>
+                    	 <li>
+	                        <a class="link changePortlet" portlet="blue">
+	                            <i class="fa fa-eyedropper"></i> Blue
+	                        </a>
+	                 </li>
+                    	 <li>
+	                        <a class="link changePortlet" portlet="green">
+	                            <i class="fa fa-eyedropper"></i> Green
+	                        </a>
+	                 </li>
+                    	 <li>
+	                        <a class="link changePortlet" portlet="orange">
+	                            <i class="fa fa-eyedropper"></i> Orange
+	                        </a>
+	                 </li>
+                    	 <li>
+	                        <a class="link changePortlet" portlet="red">
+	                            <i class="fa fa-eyedropper"></i> Red
+	                        </a>
+	                 </li>
+                    	 <li>
+	                        <a class="link changePortlet" portlet="purple">
+	                            <i class="fa fa-eyedropper"></i> Purple
+	                        </a>
+	                 </li>
+                        </ul>
                     </li>
 		    <?php endif; ?>
 
@@ -346,8 +371,8 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/daterangepicker/moment.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Flot Charts -->
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/flot/jquery.flot.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/flot/jquery.flot.resize.js"></script>
+    <!--<script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/flot/jquery.flot.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/flot/jquery.flot.resize.js"></script>-->
     <!-- Sparkline Charts -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- Moment.js -->

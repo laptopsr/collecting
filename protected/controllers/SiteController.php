@@ -35,6 +35,10 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', 
+				'actions'=>array('index'),
+				'users'=>array('@'),
+			),
+			array('allow', 
 				'actions'=>array('index', 'collecting', 'collecting_product', 'collecting_product_quantity', 'collecting_product_for_next', 'insert_barcode_kohde_osoite', 'collecting_accept', 'keskeyta', 'keskeyta_rows', 'check_barcode', 'collecting_all_done'),
 				'users'=>array('@'),
 			),

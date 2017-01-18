@@ -1,4 +1,3 @@
-<div class="row">
 <?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Registration");
 $this->breadcrumbs=array(
 	UserModule::t("Registration"),
@@ -27,10 +26,10 @@ Käyttökoodi on <b><?php echo Yii::app()->user->kayttokoodi; ?></b>
 
 <p><?php echo CHtml::link('Olen jo rekisteröinyt', Yii::app()->request->baseUrl.'/index.php/user/login',array('class'=>'btn btn-primary')); ?></p>
 <br>
-</div>
 
 
-<div class="row form">
+
+<div class="form">
   <div class="col-sm-4 well">
 <?php $form=$this->beginWidget('UActiveForm', array(
 	'id'=>'registration-form',
@@ -120,8 +119,5 @@ Käyttökoodi on <b><?php echo Yii::app()->user->kayttokoodi; ?></b>
   </div>
 </div><!-- form -->
 
-<center>
-  <img src="https://img.paytrail.com/index.svm?id=13466&type=horizontal&cols=15&text=1&auth=f6483cce23771e8f" class="img-thumbnail">
-</center>
-<br>
+
 <?php endif; ?>

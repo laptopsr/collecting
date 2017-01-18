@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html class="app-ui">
@@ -123,9 +122,9 @@
 
 
 
-
-	<?php echo $content; ?>
-
+		<div class="container-fluid">
+		 <?php echo $content; ?>
+		</div>
 
 
 

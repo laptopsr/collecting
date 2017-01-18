@@ -69,11 +69,5 @@ class DefaultController extends Controller
 		));
 	}
 
-	protected function tyyppiMuutos($data)
-	{
-		if($data->profile->tyyppi == 1)
-			return 'Yrittäjä';
-		if($data->profile->tyyppi == 2)
-			return 'Työntekijä';
-	}
+
 }

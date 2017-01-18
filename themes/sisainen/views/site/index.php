@@ -197,7 +197,7 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/fullcalendar/jquery-ui.custom.min.js"></script>
     <!-- Morris Charts -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/morris/morris.js"></script>
+    <!--<script src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/js/plugins/morris/morris.js"></script>-->
 
 
     <!-- PAGE LEVEL PLUGIN SCRIPTS -->

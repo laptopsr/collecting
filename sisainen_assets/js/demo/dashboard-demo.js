@@ -90,6 +90,7 @@ var sales_data = [{
     productC: 156.72,
     productD: 163.06
 }, ];
+/*
 Morris.Area({
     element: 'morris-chart-dashboard',
     data: sales_data,
@@ -118,7 +119,7 @@ Morris.Area({
         return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
     },
 });
-
+*/
 //Responsive Sparkline Inline Charts
 $("#sparklineA").sparkline([200, 215, 221, 214, 232, 265], {
     type: 'bar',
@@ -203,7 +204,7 @@ series = [{
 }];
 
 //
-
+/*
 var plot = $.plot(container, series, {
     grid: {
         borderWidth: 0,
@@ -257,7 +258,7 @@ setInterval(function updateRandom() {
     plot.setData(series);
     plot.draw();
 }, 500);
-
+*/
 
 //Chat Widget SlimScroll Box
 $(function() {
@@ -353,3 +354,36 @@ $(function() {
 $(document).ready(function() {
     $('#map-table-example').dataTable();
 });
+
+// Backgrounds
+$(document).ready(function() {
+
+ $(document).delegate(".changePortlet","click",function(){
+	var color = $(this).attr('portlet');
+	suoritaTeemaus(color);
+	window.location.reload();
+ });
+
+ if( localStorage.getItem('teemaus') )
+	suoritaTeemaus(localStorage.getItem('teemaus'));
+
+ function suoritaTeemaus(teemaus)
+ {
+
+	var removePortlet = 'portlet-default portlet-green portlet-info portlet-blue portlet-orange portlet-red portlet-purple';
+	var removeBtn = 'btn-default btn-green btn-info btn-blue btn-orange btn-red btn-purple';
+
+	$('.portlet-default').removeClass(removePortlet).addClass('portlet-'+ teemaus);
+	$('.btn-default').removeClass(removeBtn).addClass('btn-'+ teemaus);
+
+	localStorage.setItem('teemaus', teemaus);
+ }   
+
+});
+
+
+
+
+
+
+

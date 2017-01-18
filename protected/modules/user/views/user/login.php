@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,9 +47,9 @@
                             </h4>
                         </div>
                         <div class="portlet-widgets">
-			    <a class="btn btn-default btn-xs" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/user/registration">
+			    <!--<a class="btn btn-default btn-xs" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/user/registration">
                               <i class="fa fa-plus-circle"></i> Rekisteröinti
-			    </a>
+			    </a>-->
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -73,10 +72,11 @@
                                 <br>
 				<?php echo CHtml::submitButton(UserModule::t("Kirjaudu"), array('class'=>'btn btn-lg btn-green btn-block')); ?>
                             </fieldset>
-                            <br>
+
+                            <!--<br>
                             <p class="small">
                                 <a href="#">Unohditko salasanasi?</a>
-                            </p>
+                            </p>-->
 <?php echo CHtml::endForm(); ?>
                     </div>
                 </div>
