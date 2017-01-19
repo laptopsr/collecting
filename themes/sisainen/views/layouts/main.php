@@ -263,7 +263,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                     </li>
                     <li>
                         <a class="<?php if($curpage == 'finishedCollectingLocation/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/admin'; ?>">
-                            <i class="fa fa-location-arrow"></i> Keläilyjen sijainnit
+                            <i class="fa fa-location-arrow"></i> Keräilyjen sijainnit
                         </a>
                     </li>
                     <li>
