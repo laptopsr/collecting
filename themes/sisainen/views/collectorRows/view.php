@@ -2,32 +2,66 @@
 /* @var $this CollectorRowsController */
 /* @var $model CollectorRows */
 
-$this->breadcrumbs=array(
-	'Collector Rows'=>array('index'),
-	$model->id,
-);
 
-$this->menu=array(
-	array('label'=>'List CollectorRows', 'url'=>array('index')),
-	array('label'=>'Create CollectorRows', 'url'=>array('create')),
-	array('label'=>'Update CollectorRows', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete CollectorRows', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage CollectorRows', 'url'=>array('admin')),
-);
-?>
-
-<h1>View CollectorRows #<?php echo $model->id; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
+$arr = array(
 		'id',
 		'time',
-		'flight_no',
-		'date',
+		'flight_no_id',
 		'status',
 		'product_name',
 		'quantity',
 		'barcode',
-	),
-)); ?>
+		'description',
+		'unit',
+		'stowage',
+		'group_no',
+
+	);
+
+?>
+
+
+
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                Kerättävät tuotteet
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/admin'; ?>">Kaikki kerättävät tuotteet</a></li>
+                                <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/update?id='.$model->id; ?>">muokkaa kerättävää tuotetta #<?php echo $model->id; ?></a></li>
+                                <li class="active">  tuote #<?php echo $model->id; ?></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE ROW -->
+
+
+<div class="portlet portlet-default">
+  <div class="portlet-heading">
+      <div class="portlet-title">
+         <h4></h4>
+      </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="portlet-body">
+
+<?php 
+   $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=> $arr,
+   ));
+
+?>
+
+
+   </div>
+ </div>
+</div>
+<!-- /.portlet -->

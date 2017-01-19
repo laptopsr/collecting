@@ -39,7 +39,7 @@ class SiteController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', 
-				'actions'=>array('index', 'collecting', 'collecting_product', 'collecting_product_quantity', 'collecting_product_for_next', 'insert_barcode_kohde_osoite', 'collecting_accept', 'keskeyta', 'keskeyta_rows', 'check_barcode', 'collecting_all_done'),
+				'actions'=>array('index', 'collecting', 'collecting_product', 'collecting_product_quantity', 'collecting_product_for_next', 'insert_barcode_kohde_osoite', 'collecting_accept', 'keskeyta', 'keskeyta_rows', 'check_barcode', 'collecting_all_done', 'search_ready_coll'),
 				'users'=>array('@'),
 			),
 			array('allow', 
@@ -72,6 +72,24 @@ class SiteController extends Controller
 		
 		$this->render('collecting_all_done', array(
 			//'isMessage'=>$isMessage
+		));
+	}
+
+
+	public function actionSearch_ready_coll()
+	{
+
+		$model = new Flights;
+		if(isset($_POST['barcode']))
+		{
+		$criteria = new CDbCriteria;
+		//$criteria->order = "  "; 
+		$criteria->condition = " barcode_ready_collecting='".$_POST['barcode']."' ";
+		$model = Flights::model()->find($criteria);
+		}
+
+		$this->render('search_ready_coll', array(
+			'model'=>$model
 		));
 	}
 
@@ -353,7 +371,8 @@ class SiteController extends Controller
 			'barcode_kohde_osoite'=>$_POST['barcode'],
 			'status'=>4,
 			'collecting_end'=>$collecting_end,
-			'collecting_totaltime'=>$collecting_totaltime
+			'collecting_totaltime'=>$collecting_totaltime,
+			'barcode_ready_collecting'=>$id.date("His")
 		));
 
 		echo json_encode(array('OK'=>'Barcode lisätty.'));

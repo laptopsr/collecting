@@ -55,6 +55,7 @@ $arr = array(
 
 	?>
 	<br>
+	<small><?php echo $model->location_name; ?></small>
 	<p>
 	<?php
 	$viivakoodi = $model->barcode;

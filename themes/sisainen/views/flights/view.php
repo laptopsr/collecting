@@ -77,6 +77,7 @@ $this->breadcrumbs=array(
 		'collecting_end',
 		'collecting_totaltime',
 		'barcode_kohde_osoite',
+		'barcode_ready_collecting',
 		);
 		//   sarakkeet -->
 	}
@@ -92,6 +93,7 @@ $this->breadcrumbs=array(
 		$model->barcode_kohde_osoite = $checkOnko->location_name;
 	}
 	// <-- Barcoden nimetys muutos
+
 
 ?>
 
@@ -120,23 +122,33 @@ $this->breadcrumbs=array(
 <div class="portlet portlet-default">
   <div class="portlet-heading">
       <div class="portlet-title">
-         <h4></h4>
+         <h4><?php echo $model->barcode_kohde_osoite; ?></h4>
       </div>
     <div class="clearfix"></div>
   </div>
   <div class="portlet-body">
 
-<?php 
-   $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'cssFile' => Yii::app()->request->baseUrl.'/css/view.css',
-	'attributes'=> $arr,
-   ));
+	<?php 
+	   $this->widget('zii.widgets.CDetailView', array(
+		'data'=>$model,
+		'cssFile' => Yii::app()->request->baseUrl.'/css/view.css',
+		'attributes'=> $arr,
+	   ));
+	
+	?>
+	<br>
+	<small><?php echo $model->flight_no.' &nbsp;&nbsp;|&nbsp;&nbsp; '.$model->destination.' &nbsp;&nbsp;|&nbsp;&nbsp; '.$model->date; ?></small>
+	<p>
+	<?php
+	$viivakoodi = $model->barcode_ready_collecting;
+	echo '<img src="'.Yii::app()->getBaseUrl(true) .'/barcode_generator/index.php?viivakoodi='.$viivakoodi.'">';
+	?>
+	</p>
 
-?>
+	<br>
+	<p><?php echo CHtml::button('Tulosta tarra', array('submit'=>array('view', "id"=>$model->id, "pdf"=>true), 'class'=>'btn btn-default')); ?></p>
 
 
-   </div>
  </div>
 </div>
 <!-- /.portlet -->

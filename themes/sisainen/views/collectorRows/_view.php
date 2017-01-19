@@ -17,10 +17,6 @@
 	<?php echo CHtml::encode($data->flight_no_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
-	<?php echo CHtml::encode($data->date); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
 	<?php echo CHtml::encode($data->status); ?>
 	<br />
@@ -31,6 +27,26 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('quantity')); ?>:</b>
 	<?php echo CHtml::encode($data->quantity); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('barcode')); ?>:</b>
+	<?php echo CHtml::encode($data->barcode); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
+	<?php echo CHtml::encode($data->description); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('unit')); ?>:</b>
+	<?php echo CHtml::encode($data->unit); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('stowage')); ?>:</b>
+	<?php echo CHtml::encode($data->stowage); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('group_no')); ?>:</b>
+	<?php echo CHtml::encode($data->group_no); ?>
 	<br />
 
 	<?php /*

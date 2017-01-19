@@ -7,7 +7,6 @@
  * @property integer $id
  * @property string $time
  * @property string $flight_no
- * @property string $date
  * @property integer $status
  * @property string $product_name
  * @property integer $quantity
@@ -41,13 +40,13 @@ class CollectorRows extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('time, flight_no_id, date, status, product_name, quantity, barcode', 'required'),
+			array('flight_no_id, status, product_name, quantity, barcode', 'required'),
 			array('status, quantity, flight_no_id', 'numerical', 'integerOnly'=>true),
-			array('product_name, barcode', 'length', 'max'=>255),
-			array('date', 'length', 'max'=>50),
+			array('product_name, barcode, description', 'length', 'max'=>255),
+			array('unit, stowage, group_no', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, flight_no_id, date, status, product_name, quantity, barcode', 'safe', 'on'=>'search'),
+			array('id, time, flight_no_id, status, product_name, quantity, barcode, description, unit, stowage, group_no', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,12 +69,15 @@ class CollectorRows extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'time' => 'Time',
-			'flight_no_id' => 'Flight No',
-			'date' => 'Date',
+			'flight_no_id' => 'Lennon ID numero',
 			'status' => 'Status',
-			'product_name' => 'Product Name',
-			'quantity' => 'Quantity',
-			'barcode' => 'Barcode',
+			'product_name' => 'Nimike',
+			'quantity' => 'Määrä',
+			'barcode' => 'Viivakoodi',
+			'description' => 'Kuvaus',
+			'unit' => 'Yksikkö',
+			'stowage' => 'Säilytys',
+			'group_no' => 'Ryhmä nro.',
 		);
 	}
 
@@ -96,11 +98,14 @@ class CollectorRows extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('time',$this->time,true);
 		$criteria->compare('flight_no_id',$this->flight_no_id,true);
-		$criteria->compare('date',$this->date,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('product_name',$this->product_name,true);
 		$criteria->compare('quantity',$this->quantity);
 		$criteria->compare('barcode',$this->barcode,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('unit',$this->unit,true);
+		$criteria->compare('stowage',$this->stowage,true);
+		$criteria->compare('group_no',$this->group_no,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

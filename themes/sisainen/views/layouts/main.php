@@ -252,7 +252,13 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                     </li>
                     <li>
                         <a class="<?php if($curpage == 'status/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
-                            <i class="fa fa-users"></i> Statukset
+                            <i class="fa fa-hourglass-half"></i> Statukset
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<?php if($curpage == 'site/search_ready_coll') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/search_ready_coll'; ?>">
+
+                            <i class="fa fa-search"></i> Etsi valmis keräily
                         </a>
                     </li>
                     <li>
@@ -260,9 +266,15 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                             <i class="fa fa-location-arrow"></i> Keläilyjen sijainnit
                         </a>
                     </li>
-                    <li class="panel">
+                    <li>
+                        <a class="<?php if($curpage == 'collectorRows/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/admin'; ?>">
+                            <i class="fa fa-list"></i> Keräiltävät tuotteet
+                        </a>
+                    </li>
+                    <li>
+               <!--     <li class="panel">
                         <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#teemaus">
-                            <i class="fa fa-eyedropper"></i> Teemaus <i class="fa fa-caret-down"></i>
+                            <i class="fa fa-eyedropper"></i> Teemat <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="collapse nav" id="teemaus">
                     	 <li>
@@ -299,7 +311,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 	                        <a class="link changePortlet" portlet="purple">
 	                            <i class="fa fa-eyedropper"></i> Purple
 	                        </a>
-	                 </li>
+	                 </li>-->
                         </ul>
                     </li>
 		    <?php endif; ?>
