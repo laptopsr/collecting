@@ -77,7 +77,12 @@ $this->breadcrumbs=array(
 		'collecting_end',
 		'collecting_totaltime',
 		'barcode_kohde_osoite',
-		'barcode_ready_collecting',
+		//'barcode_ready_collecting',
+
+                array('label'=>'Muut tiedot',
+                        'type'=>'raw',
+            		'value'=>CHtml::link(CHtml::encode($model->barcode_ready_collecting), Yii::app()->baseUrl . '/index.php/site/search_ready_coll?barcode='.$model->barcode_ready_collecting), array('class'=>'btn btn-sm btn-default')),
+
 		);
 		//   sarakkeet -->
 	}

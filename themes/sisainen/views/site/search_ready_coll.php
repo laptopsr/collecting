@@ -87,7 +87,7 @@
 
 	<form action="#" method="POST">
 	    <div class="input-group">
-	      <input type="text" class="form-control input-lg" name="barcode" placeholder="Kirjoita tai skannaa viivakoodi tähän" autofocus>
+	      <input type="text" class="form-control input-lg" name="barcode" placeholder="Kirjoita tai skannaa viivakoodi tähän" autofocus value="<?php if(!empty($barcode)) echo $barcode; ?>">
 	      <span class="input-group-btn">
 	        <button type="submit" class="btn btn-default btn-lg checkBarCode" type="button">OK</button>
 	      </span>

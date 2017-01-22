@@ -17,7 +17,14 @@
                                 NIMIKE:  <?php echo $model->product_name; ?>
                             </h1>
                             <h3>
-                                MÄÄRÄ:  <?php echo $model->quantity; ?> kpl
+                                MÄÄRÄ:  <?php echo $model->quantity; ?>&nbsp; <?php echo $model->unit; ?>
+				<br>
+                                Selite:  <?php echo $model->description; ?>
+				<br>
+                                Säilytys:  <?php echo $model->stowage; ?>
+				<br>
+                                Ryhmä nro.:  <?php echo $model->group_no; ?>
+				<br>
                             </h3>
 
 			 </center>

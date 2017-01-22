@@ -91,10 +91,37 @@ $('.search-form form').submit(function(){
 			'filter' => User::itemAlias("UserStatus"),
 		),
 		// <-- Painikkeet
-		array(
-        		'header'  => '',
-			'value'=>array($this,'painikkeet'),
-    		),
+
+array(
+        'class' => 'zii.widgets.grid.CButtonColumn',
+        'htmlOptions' => array('style' => 'white-space: nowrap'),
+        'afterDelete' => 'function(link,success,data) { if (success && data) alert(data); }',
+        // 'template' => '{plus} {view} {update} {delete}',
+        'buttons' => array(
+        /*
+	'plus' => array(
+	'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'View')),
+	'label' => '<i class="fa fa-plus"></i>',
+	'imageUrl' => false,
+	),
+	*/
+            'view' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Katso')),
+                'label' => '<i class="fa fa-eye"></i>',
+                'imageUrl' => false,
+            ),
+            'update' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Muokkaa')),
+                'label' => '<i class="fa fa-pencil"></i>',
+                'imageUrl' => false,
+            ),
+            'delete' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Poista')),
+                'label' => '<i class="fa fa-times"></i>',
+                'imageUrl' => false,
+            )
+        )
+    ),
 		//     Painikkeet -->
 	),
 )); ?>

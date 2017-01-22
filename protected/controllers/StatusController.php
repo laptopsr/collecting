@@ -29,7 +29,7 @@ class StatusController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -37,7 +37,7 @@ class StatusController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'expression' => "Yii::app()->User->isAdmin()",
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -185,25 +185,4 @@ class StatusController extends Controller
 		}
 	}
 
-	protected function painikkeet($data)
-	{
-
-
-		echo '<div class="form-inline">';
-		echo '<div class="form-group" style="margin-right: 7px;">';
-		echo CHtml::link('<i class="fa fa-eye"></i>', '#', array(
-		'submit'=>array('view', "id"=>$data->id), 
-		));
-		echo '</div><div class="form-group" style="margin-right: 7px;">';
-		echo CHtml::link('<i class="fa fa-pencil-square-o"></i>', '#', array(
-		'submit'=>array('update', "id"=>$data->id), 
-		));
-		echo '</div><div class="form-group">';
-		echo CHtml::link('<i class="fa fa-trash-o"></i>', '#', array(
-		'submit'=>array('delete', "id"=>$data->id, "hyppa"=>"asiakkaanTyot/admin"),
-		'confirm'=>'Haluatko varmaasti poista?',
-		));
-		echo '</div></div>';
-	
-	}
 }

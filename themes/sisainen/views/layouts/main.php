@@ -245,27 +245,33 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 	                 </li>
                         </ul>
                     </li>
-                    <li>
-                        <a class="<?php if($curpage == 'products/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">
-                            <i class="fa fa-barcode"></i> Tulosta tarra
-                        </a>
-                    </li>
-                    <li>
+
+<!--		    <li>
                         <a class="<?php if($curpage == 'status/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">
                             <i class="fa fa-hourglass-half"></i> Statukset
                         </a>
                     </li>
+		--> 
+  
                     <li>
                         <a class="<?php if($curpage == 'site/search_ready_coll') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/search_ready_coll'; ?>">
 
                             <i class="fa fa-search"></i> Etsi valmis keräily
                         </a>
                     </li>
+
                     <li>
                         <a class="<?php if($curpage == 'finishedCollectingLocation/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/admin'; ?>">
-                            <i class="fa fa-location-arrow"></i> Keräilyjen sijainnit
+                            <i class="fa fa-location-arrow"></i> Kohteet
                         </a>
                     </li>
+
+                    <li>
+                        <a class="<?php if($curpage == 'products/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">
+                            <i class="fa fa-barcode"></i> Tuotteet
+                        </a>
+                    </li>
+
                     <li>
                         <a class="<?php if($curpage == 'collectorRows/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/admin'; ?>">
                             <i class="fa fa-list"></i> Keräiltävät tuotteet

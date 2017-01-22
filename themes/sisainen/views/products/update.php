@@ -4,7 +4,7 @@
 
 ?>
 
-
+		    <?php if(Yii::app()->user->isAdmin()) : ?>
 
 
                 <!-- begin PAGE TITLE ROW -->
@@ -45,3 +45,4 @@
  </div>
 </div>
 <!-- /.portlet -->
+		    <?php endif; ?>

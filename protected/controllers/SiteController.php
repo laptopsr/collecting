@@ -79,17 +79,26 @@ class SiteController extends Controller
 	public function actionSearch_ready_coll()
 	{
 
-		$model = new Flights;
+		$barcode = '';
 		if(isset($_POST['barcode']))
+			$barcode = $_POST['barcode'];
+		if(isset($_GET['barcode']))
+			$barcode = $_GET['barcode'];			
+
+		$model = new Flights;
+
+		if(isset($_POST['barcode']) or isset($_GET['barcode']))
 		{
-		$criteria = new CDbCriteria;
-		//$criteria->order = "  "; 
-		$criteria->condition = " barcode_ready_collecting='".$_POST['barcode']."' ";
-		$model = Flights::model()->find($criteria);
+			$criteria = new CDbCriteria;
+			//$criteria->order = "  "; 
+			$criteria->condition = " barcode_ready_collecting='".$barcode."' ";
+			$model = Flights::model()->find($criteria);
 		}
+		
 
 		$this->render('search_ready_coll', array(
-			'model'=>$model
+			'model'=>$model,
+			'barcode'=>$barcode
 		));
 	}
 
