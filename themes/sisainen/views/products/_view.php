@@ -18,5 +18,7 @@
 	<td><?php echo $data->id; ?></td>
 	<td><?php echo $data->name; ?></td>
 	<td><?php echo $data->barcode; ?></td>
+	<td><?php echo $data->stowage; ?></td>
+	<td><?php echo $data->group_no; ?></td>
 
 </tr>

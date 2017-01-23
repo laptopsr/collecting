@@ -27,6 +27,9 @@ class LoginController extends Controller
 					else
 						$this->redirect(array('/site/index'));
 				}
+				/* else {
+					$this->redirect(Yii::app()->request->baseUrl.'/index.php/user/login?error');
+				} */
 			}
 			// display the login form
 			$this->renderPartial('/user/login',array('model'=>$model));

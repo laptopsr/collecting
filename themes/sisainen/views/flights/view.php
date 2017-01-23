@@ -141,14 +141,18 @@ $this->breadcrumbs=array(
 	   ));
 	
 	?>
-	<br>
-	<small><?php echo $model->flight_no.' &nbsp;&nbsp;|&nbsp;&nbsp; '.$model->destination.' &nbsp;&nbsp;|&nbsp;&nbsp; '.$model->date; ?></small>
-	<p>
 	<?php
-	$viivakoodi = $model->barcode_ready_collecting;
-	echo '<img src="'.Yii::app()->getBaseUrl(true) .'/barcode_generator/index.php?viivakoodi='.$viivakoodi.'">';
+	if(!empty($model->barcode_ready_collecting)){
+		echo '
+		<br>
+		<small>'.$model->flight_no.' &nbsp;&nbsp;|&nbsp;&nbsp; '.$model->destination.' &nbsp;&nbsp;|&nbsp;&nbsp; '.$model->date.'</small>
+		<p>';
+		$viivakoodi = $model->barcode_ready_collecting;
+		echo '<img src="'.Yii::app()->getBaseUrl(true) .'/barcode_generator/index.php?viivakoodi='.$viivakoodi.'">';
+		echo '</p>';
+	}
 	?>
-	</p>
+	
 
 	<br>
 	<p><?php echo CHtml::button('Tulosta tarra', array('submit'=>array('view', "id"=>$model->id, "pdf"=>true), 'class'=>'btn btn-default')); ?></p>

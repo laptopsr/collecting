@@ -46,7 +46,8 @@
 		$criteria->condition = " flight_no_id='".$model->id."' ";
 		$cr = CollectorRows::model()->findAll($criteria);
 	?>
-
+<h1>Keräilyn sisältö:</h1>
+<br>
 	<?php if( count($cr) > 0 ): ?>
 	<table class="table">
 	<thead>
@@ -78,6 +79,12 @@
   </div>
 </div>
 <!-- /.portlet -->
+<?php elseif(isset($_POST['barcode']) or isset($_GET['barcode'])) : ?>
+<div class="row">
+ <div class="col-sm-6 col-sm-offset-3">
+	<div class="alert bg-warning">Keräilyä ei löytynyt. Tarkista, että viivakoodi on annettu oikein.</div>
+ </div>
+</div>
 <?php endif; ?>
 
 <br>

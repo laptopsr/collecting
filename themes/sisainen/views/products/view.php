@@ -7,6 +7,8 @@ $arr = array(
 		'id',
 		'name',
 		'barcode',
+		'stowage',
+		'group_no',
 
 	);
 
@@ -23,7 +25,7 @@ $arr = array(
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
 		    		<?php if(Yii::app()->user->isAdmin()) : ?>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/status/admin'; ?>">tuotteiden hallinta</a></li>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">tuotteiden hallinta</a></li>
                                 <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/update?id='.$model->id; ?>">muokkaa tuotetta #<?php echo $model->id; ?></a></li>
 		    		<?php endif; ?>
                                 <li class="active">  tuote id #<?php echo $model->id; ?></li>
@@ -56,6 +58,8 @@ $arr = array(
 	?>
 	<br>
 	<p>
+	<small>KP:&nbsp;<?php echo $model->stowage; ?> &nbsp;&nbsp;|&nbsp;&nbsp;R.nro:&nbsp; <?php echo $model->group_no; ?></small>
+	<br>
 	<?php
 	$viivakoodi = $model->barcode;
 	echo '<img src="'.Yii::app()->getBaseUrl(true) .'/barcode_generator/index.php?viivakoodi='.$viivakoodi.'">';

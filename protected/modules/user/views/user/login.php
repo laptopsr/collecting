@@ -54,9 +54,20 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="portlet-body">
+		     
+
+<?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
+
+<div class="success">
+	<?php echo Yii::app()->user->getFlash('loginMessage'); ?>
+</div>
+
+<?php endif; ?>
+
 
 
 <?php echo CHtml::beginForm(); ?>
+			    <?php echo CHtml::errorSummary($model); ?>
                             <fieldset>
                                 <div class="form-group">
                                     <?php echo CHtml::activeTextField($model,'username',array('class'=>'form-control')) ?>

@@ -246,10 +246,17 @@ class SiteController extends Controller
 		// <-- update status
 		if(isset($model->id))
 		{
+
+			$collecting_start= date("d.m.Y H:i");
+
+			$chkFlight = Flights::model()->findByPk($id);
+			if(isset($chkFlight->collecting_start) and !empty($chkFlight->collecting_start))
+			$collecting_start = $chkFlight->collecting_start;
+
 			Flights::model()->updateByPk($id, array(
 					'status'=>2,
 					'collector_id'=>Yii::app()->user->id,
-					'collecting_start'=>date("d.m.Y H:i")
+					'collecting_start'=>$collecting_start
 			));
 
 

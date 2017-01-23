@@ -68,6 +68,8 @@ $('.search-form form').submit(function(){
 		//'time',
 		'name',
 		'barcode',
+		'stowage',
+		'group_no',
 		// <-- Painikkeet
 
 array(

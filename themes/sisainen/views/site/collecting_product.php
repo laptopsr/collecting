@@ -16,6 +16,15 @@
                             <h1>
                                 NIMIKE:  <?php echo $model->product_name; ?>
                             </h1>
+                            <h3>
+                                Selite:  <?php echo $model->description; ?>
+				<br>
+                                Säilytys:  <?php echo $model->stowage; ?>
+				<br>
+                                Ryhmä nro.:  <?php echo $model->group_no; ?>
+				<br>
+                            </h3>
+
 			 </center>
                         </div>
                     </div>

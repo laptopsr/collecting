@@ -120,7 +120,13 @@ class FlightsController extends Controller
 					Flights::model()->updateByPk($model->id, array(
 						'keskeytys_syy'=>'',
 						'collector_id'=>0,
-						'collecting_start'=>''
+						'collecting_start'=>'',
+						'collecting_end'=>'',
+						'barcode_kohde_osoite'=>'',
+						'collecting_totaltime'=>'',
+						'user_is_collector_page'=>'',
+						'user_is_collector_page_started'=>'',
+						'barcode_ready_collecting'=>''
 					));
 				}
 
@@ -165,6 +171,7 @@ class FlightsController extends Controller
 	{
 		$model=new Flights('search');
 		$model->unsetAttributes();  // clear any default values
+
 		if(isset($_GET['Flights']))
 			$model->attributes=$_GET['Flights'];
 
@@ -212,7 +219,7 @@ class FlightsController extends Controller
 	protected function lentoLinkki($data)
 	{
 		$return = CHtml::link($data->flight_no, Yii::app()->request->baseUrl.'/index.php/collectorRows/admin?flights_id='.$data->id,
-			 array('class'=>'link')
+			 array('class'=>'link', 'style'=>'font-weight:bold')
 		);
 		return $return;
 	}

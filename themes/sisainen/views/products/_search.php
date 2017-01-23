@@ -31,6 +31,16 @@
 		<?php echo $form->textField($model,'barcode',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
 	</div>
 
+	<div class="">
+		<?php echo $form->label($model,'stowage'); ?>
+		<?php echo $form->textField($model,'stowage',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
+	</div>
+
+	<div class="">
+		<?php echo $form->label($model,'group_no'); ?>
+		<?php echo $form->textField($model,'group_no',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
+	</div>
+
 	<br>
 	<div class="buttons">
 		<?php echo CHtml::submitButton('Hae', array('class'=>'btn btn-default')); ?>

@@ -60,7 +60,7 @@ class UserLogin extends CFormModel
 					$this->addError("username",UserModule::t("Sähköposti on virheellinen."));
 					break;
 				case UserIdentity::ERROR_USERNAME_INVALID:
-					$this->addError("username",UserModule::t("Käyttäjätunnus on virheellinen."));
+					$this->addError("username",UserModule::t("Käyttäjätunnus tai salasana on virheelinen."));
 					break;
 				case UserIdentity::ERROR_STATUS_NOTACTIV:
 					$this->addError("status",UserModule::t("Tunnuksiasi ei ole aktivoitu."));
@@ -69,7 +69,7 @@ class UserLogin extends CFormModel
 					$this->addError("status",UserModule::t("Tilisi on estetty."));
 					break;
 				case UserIdentity::ERROR_PASSWORD_INVALID:
-					$this->addError("password",UserModule::t("Salasana on virheellinen."));
+					$this->addError("password",UserModule::t("Käyttäjätunnus tai salasana on virheelinen."));
 					break;
 			}
 		}

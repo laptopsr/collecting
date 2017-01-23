@@ -37,11 +37,11 @@ class Products extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, barcode', 'required'),
-			array('name, barcode', 'length', 'max'=>255),
+			array('name, barcode, stowage, group_no', 'required'),
+			array('name, barcode, stowage, group_no', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, time, name, barcode', 'safe', 'on'=>'search'),
+			array('id, time, name, barcode, stowage, group_no', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +66,8 @@ class Products extends CActiveRecord
 			'time' => 'Time',
 			'name' => 'Tuotteen nimi',
 			'barcode' => 'Viivakoodi',
+			'stowage' => 'Kustannuspaikka',
+			'group_no' => 'Ryhmänumero',
 		);
 	}
 
@@ -84,9 +86,18 @@ class Products extends CActiveRecord
 		$criteria->compare('time',$this->time,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('barcode',$this->barcode,true);
+		$criteria->compare('stowage',$this->stowage,true);
+		$criteria->compare('group_no',$this->group_no,true);
+
+		//return new CActiveDataProvider($this, array(
+		//	'criteria'=>$criteria,
+		//));
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+		        'pagination' => array(
+		            'pageSize' => 50, // montako kpl sivulla
+		        ),
 		));
 	}
 }

@@ -28,6 +28,18 @@
 		<?php echo $form->error($model,'barcode'); ?>
 	</div>
 
+	<div class="">
+		<?php echo $form->labelEx($model,'stowage'); ?>
+		<?php echo $form->textField($model,'stowage',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'stowage'); ?>
+	</div>
+
+	<div class="">
+		<?php echo $form->labelEx($model,'group_no'); ?>
+		<?php echo $form->textField($model,'group_no',array('size'=>60,'maxlength'=>255, 'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'group_no'); ?>
+	</div>
+
 	<br>
 
 	<div class="buttons">
