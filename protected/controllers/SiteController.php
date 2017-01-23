@@ -238,6 +238,10 @@ class SiteController extends Controller
 	public function actionCollecting_product($id)
 	{
 
+		$barcode = '';
+		if ( isset($_GET['ean']) )
+		$barcode = $_GET['ean'];
+
 		$criteria = new CDbCriteria;
 		$criteria->order = " id ASC ";
 		$criteria->condition = " flight_no_id='".$id."' AND status!=4 ";
@@ -267,6 +271,7 @@ class SiteController extends Controller
 		$this->render('collecting_product', array(
 			'model'=>$model,
 			'flights_id'=>$id,
+			'barcode'=>$barcode
 		));
 	}
 
@@ -353,12 +358,31 @@ class SiteController extends Controller
 
 	}
 
-	public function actionCollecting_accept($id, $row_id)
+	public function actionCollecting_accept()
 	{
+
+		if ( isset($_GET['id']) ) $id = $_GET['id'];
+		if ( isset($_GET['row_id']) ) $row_id = $_GET['row_id'];
+		if ( isset($_GET['params']) ) 
+		{
+			$ex = explode("//", $_GET['params']);
+			$id = $ex[0];
+			$row_id = $ex[1];
+		}
+
+		$ean = '';
+		if ( isset($_GET['ean']) )
+		{
+			$ean = $_GET['ean'];
+		}
 
 		$model = Flights::model()->findByPk($id);
 
-		$this->render('collecting_accept', array('model'=>$model, 'row_id'=>$row_id));
+		$this->render('collecting_accept', array(
+			'model'=>$model, 
+			'row_id'=>$row_id,
+			'ean'=>$ean
+		));
 		
 	}
 

@@ -6,6 +6,8 @@
 	}
 ?>
 
+
+
 <div class="row">
  <div class="col-sm-4 col-sm-offset-3">
                 <!-- begin PAGE TITLE ROW -->
@@ -35,6 +37,11 @@
  </div>
 </div>
 
+<div class="row">
+ <div class="col-sm-6 col-sm-offset-3">
+  <?php echo CHtml::link('Lue viivakoodi', 'pic2shop://scan?callback=http://'.$_SERVER['HTTP_HOST'].Yii::app()->request->baseUrl.'/index.php/site/collecting_product?id='.$flights_id.'&barcode=EAN', array('class'=>'btn btn-lg btn-default btn-block')); ?>
+ </div>
+</div>
 <br>
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
@@ -42,7 +49,7 @@
 	<form action="#" method="POST">
 	    <div class="input-group">
 	      <input type="hidden" class="form-control" id="this_id" value="<?php echo $model->id; ?>">
-	      <input type="text" class="form-control input-lg" id="barcode" placeholder="Kirjoita tai skanna viivakoodi tähän" autofocus>
+	      <input type="text" class="form-control input-lg" id="barcode" placeholder="Kirjoita tai skanna viivakoodi tähän" autofocus value="<?php echo $barcode; ?>">
 	      <span class="input-group-btn">
 	        <button class="btn btn-lg btn-default checkBarCode" type="button">OK</button>
 	      </span>

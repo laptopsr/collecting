@@ -24,13 +24,23 @@
 
 <br>
 
+<?php
+	$scanlink = "http://".$_SERVER['HTTP_HOST'].Yii::app()->request->baseUrl."/index.php/site/collecting_accept?params=".$model->id."//".$row_id."&barcode=EAN";
+?>
+
+<div class="row">
+ <div class="col-sm-6 col-sm-offset-3">
+  <?php echo CHtml::link('Lue viivakoodi', 'pic2shop://scan?callback='.$scanlink, array('class'=>'btn btn-lg btn-default btn-block')); ?>
+ </div>
+</div>
+<br>
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
 
 	<form action="#" method="POST">
 	    <div class="input-group">
 	      <input type="hidden" class="form-control" id="this_id" value="<?php echo $model->id; ?>">
-	      <input type="text" class="form-control input-lg" id="barcode" placeholder="Kirjoita tai skanna viivakoodi tähän" autofocus>
+	      <input type="text" class="form-control input-lg" id="barcode" placeholder="Kirjoita tai skanna viivakoodi tähän" autofocus value="<?php echo $ean; ?>">
 	      <span class="input-group-btn">
 	        <button class="btn btn-default btn-lg checkBarCode" type="button">OK</button>
 	      </span>
@@ -39,9 +49,7 @@
 
  </div>
 </div>
-
 <br>
-
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('Takaisin', Yii::app()->request->baseUrl.'/index.php/site/collecting_product_quantity?id='.$row_id, array('class'=>'btn btn-lg btn-default btn-block')); ?>
