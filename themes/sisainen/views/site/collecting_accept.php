@@ -27,12 +27,13 @@
 <?php
 	$scanlink = "http://".$_SERVER['HTTP_HOST'].Yii::app()->request->baseUrl."/index.php/site/collecting_accept?params=".$model->id."//".$row_id."&barcode=EAN";
 ?>
-
+<!--
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('Lue viivakoodi', 'pic2shop://scan?callback='.$scanlink, array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
+-->
 <br>
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">

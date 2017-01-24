@@ -36,12 +36,13 @@
                 <!-- end PAGE TITLE ROW -->
  </div>
 </div>
-
+<!--
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
   <?php echo CHtml::link('Lue viivakoodi', 'pic2shop://scan?callback=http://'.$_SERVER['HTTP_HOST'].Yii::app()->request->baseUrl.'/index.php/site/collecting_product?id='.$flights_id.'&barcode=EAN', array('class'=>'btn btn-lg btn-default btn-block')); ?>
  </div>
 </div>
+-->
 <br>
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
