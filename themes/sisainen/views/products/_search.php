@@ -16,10 +16,12 @@
 		<?php echo $form->textField($model,'id', array('class'=>'form-control')); ?>
 	</div>
 
+<!--
 	<div class="">
 		<?php echo $form->label($model,'time'); ?>
 		<?php echo $form->textField($model,'time', array('class'=>'form-control')); ?>
 	</div>
+-->
 
 	<div class="">
 		<?php echo $form->label($model,'name'); ?>

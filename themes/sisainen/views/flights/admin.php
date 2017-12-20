@@ -49,17 +49,17 @@ array(
 	*/
             'view' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Katso')),
-                'label' => '<i class="fa fa-eye"></i>',
+                'label' => '<span class="btn btn-default btn-md"><i class="fa fa-eye fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'update' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Muokkaa')),
-                'label' => '<i class="fa fa-pencil"></i>',
+                'label' => '<span class="btn btn-purple btn-md"><i class="fa fa-pencil fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'delete' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Poista')),
-                'label' => '<i class="fa fa-times"></i>',
+                'label' => '<span class="btn btn-orange btn-md"><i class="fa fa-times fa-lg"></i></span>',
                 'imageUrl' => false,
             )
         )
@@ -102,17 +102,17 @@ array(
 	*/
             'view' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Katso')),
-                'label' => '<i class="fa fa-eye"></i>',
+                'label' => '<span class="btn btn-default btn-md"><i class="fa fa-eye fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'update' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Muokkaa')),
-                'label' => '<i class="fa fa-pencil"></i>',
+                'label' => '<span class="btn btn-purple btn-md"><i class="fa fa-pencil fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'delete' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Poista')),
-                'label' => '<i class="fa fa-times"></i>',
+                'label' => '<span class="btn btn-orange btn-md"><i class="fa fa-times fa-lg"></i></span>',
                 'imageUrl' => false,
             )
         )
@@ -156,17 +156,17 @@ array(
 	*/
             'view' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Katso')),
-                'label' => '<i class="fa fa-eye"></i>',
+                'label' => '<span class="btn btn-default btn-md"><i class="fa fa-eye fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'update' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Muokkaa')),
-                'label' => '<i class="fa fa-pencil"></i>',
+                'label' => '<span class="btn btn-purple btn-md"><i class="fa fa-pencil fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'delete' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Poista')),
-                'label' => '<i class="fa fa-times"></i>',
+                'label' => '<span class="btn btn-orange btn-md"><i class="fa fa-times fa-lg"></i></span>',
                 'imageUrl' => false,
             )
         )
@@ -211,17 +211,17 @@ array(
 	*/
             'view' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Katso')),
-                'label' => '<i class="fa fa-eye"></i>',
+                'label' => '<span class="btn btn-default btn-md"><i class="fa fa-eye fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'update' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Muokkaa')),
-                'label' => '<i class="fa fa-pencil"></i>',
+                'label' => '<span class="btn btn-purple btn-md"><i class="fa fa-pencil fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'delete' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Poista')),
-                'label' => '<i class="fa fa-times"></i>',
+                'label' => '<span class="btn btn-orange btn-md"><i class="fa fa-times fa-lg"></i></span>',
                 'imageUrl' => false,
             )
         )
@@ -240,7 +240,7 @@ array(
                                 Lennot
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
                                 <li class="active"> <?php echo $sivu; ?></li>
                             </ol>
                         </div>

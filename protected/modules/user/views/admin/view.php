@@ -17,6 +17,26 @@ $arr = array(
 		'status',
 
 	);
+	// <-- superuser muutos
+	if ($model->superuser == '1')
+	$model->superuser = 'Kyllä';
+	if ($model->superuser == '0')
+	$model->superuser = 'Ei';
+	// <-- superuser muutos
+
+	// <-- status muutos
+	if ($model->status == '1')
+	$model->status = 'Aktiivinen';
+	if ($model->status == '0')
+	$model->status = 'Ei aktiivinen';
+	if ($model->status == '-1')
+	$model->status = 'Estetty';
+	// <-- status muutos
+
+	// <-- vierailu muutos
+	if ($model->lastvisit_at == '0000-00-00 00:00:00')
+	$model->lastvisit_at = 'Ei ikinä'
+	// <-- vierailu muutos
 
 ?>
 
@@ -30,7 +50,7 @@ $arr = array(
                                 Profiilit
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
                                 <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin'; ?>">Profiilien hallinta</a></li>
                                 <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin/update/id/'.$model->id; ?>">muokkaa profiilia #<?php echo $model->id; ?></a></li>
                                 <li class="active">  status #<?php echo $model->id; ?></li>

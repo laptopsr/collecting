@@ -23,7 +23,7 @@ $arr = array(
                                 Tuotteet
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
 		    		<?php if(Yii::app()->user->isAdmin()) : ?>
                                 <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">tuotteiden hallinta</a></li>
                                 <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/update?id='.$model->id; ?>">muokkaa tuotetta #<?php echo $model->id; ?></a></li>
@@ -41,7 +41,7 @@ $arr = array(
 <div class="portlet portlet-default">
   <div class="portlet-heading">
       <div class="portlet-title">
-         <h4><?php echo $model->name; ?></h4>
+         <h4><?php echo ucfirst($model->name); ?></h4>
       </div>
     <div class="clearfix"></div>
   </div>

@@ -206,4 +206,15 @@ class AdminController extends Controller
 			return 'Työntekijä';
 	}
 
+	protected function visitMuutos($data)
+	{
+
+		if($data->lastvisit_at != '0000-00-00 00:00:00')
+			return date("d.m.Y H:i", strtotime($data->lastvisit_at));
+		else
+			return 'Ei ikinä';
+
+	
+	}
+
 }

@@ -9,7 +9,7 @@
 
 
 <div class="row">
- <div class="col-sm-4 col-sm-offset-3">
+ <div class="col-sm-12">
                 <!-- begin PAGE TITLE ROW -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -23,10 +23,9 @@
 				<br>
                                 Säilytys:  <?php echo $model->stowage; ?>
 				<br>
-                                Ryhmä nro.:  <?php echo $model->group_no; ?>
+                                Ryhmä nro:  <?php echo $model->group_no; ?>
 				<br>
                             </h3>
-
 			 </center>
                         </div>
                     </div>

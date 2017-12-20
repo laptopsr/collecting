@@ -37,7 +37,7 @@
                                 Lentot
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
                                 <li class="active"> <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/flights/admin?'.$sivu; ?>"><?php echo $translate; ?></a></li>
                                 <li class="active"> Muokkaa lentoa <?php echo $model->id; ?></li>
                             </ol>

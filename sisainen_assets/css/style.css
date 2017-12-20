@@ -592,6 +592,7 @@ span.required{
 .navbar-side .side-nav li.panel ul li {
     border-top: none;
     border-bottom: none;
+
 }
 
 .navbar-side .side-nav li.panel ul li a,
@@ -1559,6 +1560,7 @@ a.google-plus-link:hover {
 
     .mailbox-nav>ul>li.checkall {
         display: inherit;
+
         margin-left: 11px;
         padding: 15px;
     }
@@ -1753,9 +1755,9 @@ a.google-plus-link:hover {
     background-color: rgba(255,255,255,.1);
     cursor: pointer;
 }
-
+/*TÄSSÄ ON VIIVA JOKA TULEE RIVILLE KLIKATESSA*/
 .selected {
-    text-decoration: line-through;
+    /*text-decoration: line-through;*/
 }
 
 .task-time {

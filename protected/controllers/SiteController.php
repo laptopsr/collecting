@@ -201,7 +201,25 @@ class SiteController extends Controller
 		$criteria->condition = " status=2 AND collector_id='".Yii::app()->user->id."' ";
 		$checkKerailyssa = Flights::model()->find($criteria);
 		if(isset($checkKerailyssa->id))
-			$this->redirect('collecting_product?id='.$checkKerailyssa->id);
+		{
+
+			$criteria = new CDbCriteria;
+			$criteria->condition = " flight_no_id='".$checkKerailyssa->id."' AND status!=4 ";
+			$ccrr = CollectorRows::model()->find($criteria);
+
+			if( isset($ccrr->id) )
+			{
+				$this->redirect('collecting_product?id='.$checkKerailyssa->id);
+			} else {
+				$criteria = new CDbCriteria;
+				$criteria->order = " id DESC ";
+				$criteria->condition = " flight_no_id='".$checkKerailyssa->id."' AND status=4 ";
+				$c = CollectorRows::model()->find($criteria);
+				if( isset($c->id) )
+				$this->redirect('collecting_accept?id='.$checkKerailyssa->id.'&row_id='.$c->id);
+				exit;
+			}
+		}
 		//    Olenko ma kerailyssa -->
 	
 

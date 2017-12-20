@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/img/favicon.ico">
 <head>
 
     <meta charset="utf-8">
@@ -99,9 +99,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
                 <div class="navbar-brand">
                     <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/site/index" style="color:#ccc;">
-			<?php echo Yii::app()->name; ?>
-			
-                        <!--<img src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/flex-admin-logo.png" data-1x="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/flex-admin-logo@1x.png" data-2x="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/flex-admin-logo@2x.png" class="hisrc img-responsive" alt="">-->
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/flex-admin-logo.png" data-1x="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/flex-admin-logo@1x.png" data-2x="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/flex-admin-logo@2x.png" class="hisrc img-responsive" alt="">
                     </a>
                 </div>
             </div>
@@ -130,19 +128,19 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-user"></i>  <i class="fa fa-caret-down"></i>
+                            <i class="fa fa-user fa-lg"></i>  <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
 
 
                             <li>
                                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/user/profile/edit">
-                                    <i class="fa fa-user"></i> Profiili
+                                    <i class="fa fa-user fa-lg"></i> Profiili
                                 </a>
                             </li>
                             <li>
                                 <a class="logout_open" href="#logout">
-                                    <i class="fa fa-sign-out"></i> Kirjaudu ulos
+                                    <i class="fa fa-sign-out fa-lg"></i> Kirjaudu ulos
                                     <!--<strong><?php echo Yii::app()->user->firstname; ?> <?php echo Yii::app()->user->lastname; ?></strong>-->
                                 </a>
                             </li>
@@ -203,7 +201,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 		    <?php if(Yii::app()->user->isAdmin()) : ?>
                     <li>
                         <a class="<?php if($curpage == 'site/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">
-                            <i class="fa fa-dashboard"></i> Etusivu
+                            <i class="fa fa-dashboard fa-2x"></i> Etusivu
                         </a>
                     </li>
                     <!-- end DASHBOARD LINK -->
@@ -211,36 +209,36 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
 
                     <li>
                         <a class="<?php if($curpage == 'admin/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin'; ?>">
-                            <i class="fa fa-users"></i> Työntekijät
+                            <i class="fa fa-users fa-2x"></i> Työntekijät
                         </a>
                     </li>
                     <li class="panel">
                         <a class="<?php if($curpage == 'flights/admin') echo 'active'; ?>" href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#asiakkaat">
-                            <i class="fa fa-shopping-cart"></i> Keräily <i class="fa fa-caret-down"></i>
+                            <i class="fa fa-shopping-cart fa-2x"></i> Keräily <i class="fa fa-caret-down fa-2x"></i>
                         </a>
                         <ul class="collapse <?php if($curpage == 'asiakkaat/index' or $curpage == 'asiakkaat/create' or $curpage == 'asiakkaat/update') echo 'in'; ?> nav" id="asiakkaat">
 
                     	 <li>
 	                        <a class="<?php if($curpage == 'asiakkaat/create') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?avoimet">
-	                            <i class="fa fa-flag"></i> Avoimet
+	                            <i class="fa fa-flag fa-2x"></i> Avoimet
 	                        </a>
 	                 </li>
 
                     	 <li>
 	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?kerailyssa">
-	                            <i class="fa fa-gears"></i> Keräilyssä
+	                            <i class="fa fa-gears fa-2x"></i> Keräilyssä
 	                        </a>
 	                 </li>
 
                     	 <li>
 	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?keskeytetyt">
-	                            <i class="fa fa-ban"></i> Keskeytetyt
+	                            <i class="fa fa-ban fa-2x"></i> Keskeytetyt
 	                        </a>
 	                 </li>
 
                     	 <li>
 	                        <a class="<?php if($curpage == 'asiakkaat/index') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/flights/admin?valmiit">
-	                            <i class="fa fa-archive"></i> Valmiit
+	                            <i class="fa fa-archive fa-2x"></i> Valmiit
 	                        </a>
 	                 </li>
                         </ul>
@@ -256,25 +254,25 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
                     <li>
                         <a class="<?php if($curpage == 'site/search_ready_coll') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/search_ready_coll'; ?>">
 
-                            <i class="fa fa-search"></i> Etsi valmis keräily
+                            <i class="fa fa-search fa-2x"></i> Etsi valmis keräily
                         </a>
                     </li>
 
                     <li>
                         <a class="<?php if($curpage == 'finishedCollectingLocation/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/finishedCollectingLocation/admin'; ?>">
-                            <i class="fa fa-location-arrow"></i> Kohteet
+                            <i class="fa fa-location-arrow fa-2x"></i> Kohteet
                         </a>
                     </li>
 
                     <li>
                         <a class="<?php if($curpage == 'products/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/products/admin'; ?>">
-                            <i class="fa fa-barcode"></i> Tuotteet
+                            <i class="fa fa-barcode fa-2x"></i> Tuotteet
                         </a>
                     </li>
 
                     <li>
                         <a class="<?php if($curpage == 'collectorRows/admin') echo 'active'; ?>" href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/admin'; ?>">
-                            <i class="fa fa-list"></i> Keräiltävät tuotteet
+                            <i class="fa fa-list fa-2x"></i> Keräiltävät tuotteet
                         </a>
                     </li>
                     <li>
@@ -360,7 +358,7 @@ $curpage .= '/'.Yii::app()->getController()->getAction()->controller->action->id
           <!--  <img class="img-circle img-logout" src="<?php echo Yii::app()->request->baseUrl; ?>/sisainen_assets/img/profile-pic.jpg" alt="">-->
 	<br>
             <h3>
-                <i class="fa fa-sign-out text-green"></i> Haluatko kirjautua ulos?
+                <i class=""></i> Haluatko kirjautua ulos?
             </h3>
             <p>Valitse "Ulos" <br> lopettaaksesi istuntosi.</p>
             <ul class="list-inline">

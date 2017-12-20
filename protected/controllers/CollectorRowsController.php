@@ -184,4 +184,19 @@ class CollectorRowsController extends Controller
 		}
 	}
 
+	protected function statusMuutos($data)
+	{
+
+		if($data->status == '1')
+			return 'Avoin';
+		elseif($data->status == '2')
+			return '<span style="color:#f1c40f">Keräilyssä</span>';
+		elseif($data->status == '3')
+			return '<span style="color:#e74c3c">Keskeytetty</span>';
+		elseif($data->status == '4')
+			return '<span style="color:#16a085">Valmis</span>';
+	
+	}
+
+
 }

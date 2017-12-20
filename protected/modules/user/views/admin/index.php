@@ -29,7 +29,7 @@ $('.search-form form').submit(function(){
                                 Hallitse profiileja <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/user/create'; ?>" data-toggle="tooltip" data-placement="right" title="Luo uusi profiili"><i class="fa fa-plus-square"></i></a>
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a>
                                 </li>
                                 <li class="active">Kaikki profiilit</li>
                             </ol>
@@ -78,8 +78,16 @@ $('.search-form form').submit(function(){
 			'type'=>'raw',
 			'value'=>'CHtml::link(UHtml::markSearch($data,"email"), "mailto:".$data->email)',
 		),
-		'create_at',
-		'lastvisit_at',
+		array(
+        		'name'  => 'create_at',
+			'value'=>'date("d.m.Y H:i", strtotime($data->create_at))',
+		),
+		array(
+        		'name'  => 'lastvisit_at',
+			'value'=>array($this,'visitMuutos'),
+			'type'=>'raw'
+		),
+
 		array(
 			'name'=>'superuser',
 			'value'=>'User::itemAlias("AdminStatus",$data->superuser)',
@@ -107,17 +115,17 @@ array(
 	*/
             'view' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Katso')),
-                'label' => '<i class="fa fa-eye"></i>',
+                'label' => '<span class="btn btn-default btn-md"><i class="fa fa-eye fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'update' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Muokkaa')),
-                'label' => '<i class="fa fa-pencil"></i>',
+                'label' => '<span class="btn btn-purple btn-md"><i class="fa fa-pencil fa-lg"></i></span>',
                 'imageUrl' => false,
             ),
             'delete' => array(
                 'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Poista')),
-                'label' => '<i class="fa fa-times"></i>',
+                'label' => '<span class="btn btn-orange btn-md"><i class="fa fa-times fa-lg"></i></span>',
                 'imageUrl' => false,
             )
         )

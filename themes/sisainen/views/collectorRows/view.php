@@ -18,6 +18,17 @@ $arr = array(
 
 	);
 
+	// <-- status muutos
+	if ($model->status == '1')
+	$model->status = 'Avoin';
+	if ($model->status == '2')
+	$model->status = 'Keräilyssä';
+	if ($model->status == '3')
+	$model->status = 'Keskeytetty';
+	if ($model->status == '4')
+	$model->status = 'Valmis';
+	// <-- status muutos
+
 ?>
 
 
@@ -30,7 +41,7 @@ $arr = array(
                                 Kerättävät tuotteet
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
                                 <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/admin'; ?>">Kaikki kerättävät tuotteet</a></li>
                                 <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/collectorRows/update?id='.$model->id; ?>">muokkaa kerättävää tuotetta #<?php echo $model->id; ?></a></li>
                                 <li class="active">  tuote #<?php echo $model->id; ?></li>
@@ -46,7 +57,7 @@ $arr = array(
 <div class="portlet portlet-default">
   <div class="portlet-heading">
       <div class="portlet-title">
-         <h4></h4>
+         <h4><?php echo ucfirst($model->product_name); ?></h4>
       </div>
     <div class="clearfix"></div>
   </div>
@@ -55,6 +66,7 @@ $arr = array(
 <?php 
    $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
+	'cssFile' => Yii::app()->request->baseUrl.'/css/view.css',
 	'attributes'=> $arr,
    ));
 

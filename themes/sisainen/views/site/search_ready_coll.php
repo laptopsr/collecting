@@ -82,7 +82,7 @@
 <?php elseif(isset($_POST['barcode']) or isset($_GET['barcode'])) : ?>
 <div class="row">
  <div class="col-sm-6 col-sm-offset-3">
-	<div class="alert bg-warning">Keräilyä ei löytynyt. Tarkista, että viivakoodi on annettu oikein.</div>
+	<div class="alert red" style="color:white">Keräilyä ei löytynyt. Tarkista, että viivakoodi on annettu oikein.</div>
  </div>
 </div>
 <?php endif; ?>
@@ -94,9 +94,9 @@
 
 	<form action="#" method="POST">
 	    <div class="input-group">
-	      <input type="text" class="form-control input-lg" name="barcode" placeholder="Kirjoita tai skannaa viivakoodi tähän" autofocus value="<?php if(!empty($barcode)) echo $barcode; ?>">
+	      <input type="text" class="form-control input-lg" name="barcode" placeholder="Kirjoita tai skannaa viivakoodi tähän" autofocus value="<?php if(!empty($barcode)) echo $barcode; ?>" required>
 	      <span class="input-group-btn">
-	        <button type="submit" class="btn btn-default btn-lg checkBarCode" type="button">OK</button>
+	        <button type="submit" class="btn btn-default btn-lg checkBarCode" type="button"><i class="fa fa-search fa-lg"></i></button>
 	      </span>
 	    </div>
 	</form>

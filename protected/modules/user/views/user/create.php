@@ -13,8 +13,8 @@
                                 Luo profiili
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
-                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user'; ?>">profiilit</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/admin'; ?>">profiilit</a></li>
                                 <li class="active">  luo profiili</li>
                             </ol>
                         </div>

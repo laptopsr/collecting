@@ -15,15 +15,15 @@
 			 <center>
                             <h1>
                                 NIMIKE:  <?php echo $model->product_name; ?>
+				<br>
+                                MÄÄRÄ:  <?php echo $model->quantity; ?>&nbsp; <?php echo $model->unit; ?>
                             </h1>
                             <h3>
-                                MÄÄRÄ:  <?php echo $model->quantity; ?>&nbsp; <?php echo $model->unit; ?>
-				<br>
                                 Selite:  <?php echo $model->description; ?>
 				<br>
                                 Säilytys:  <?php echo $model->stowage; ?>
 				<br>
-                                Ryhmä nro.:  <?php echo $model->group_no; ?>
+                                Ryhmä nro:  <?php echo $model->group_no; ?>
 				<br>
                             </h3>
 

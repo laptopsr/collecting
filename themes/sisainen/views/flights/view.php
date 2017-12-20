@@ -111,7 +111,7 @@ $this->breadcrumbs=array(
                                 Lennot
                             </h1>
                             <ol class="breadcrumb">
-                                <li><i class="fa fa-dashboard"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
+                                <li><i class="fa fa-dashboard fa-lg"></i>  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/site/index'; ?>">Etusivu</a></li>
                                 <li class="active"> <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/flights/admin?'.$sivu; ?>"><?php echo $translate; ?></a></li>
                                 <li class="active">  <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/flights/update?id='.$model->id; ?>">muokkaa lentoriviä #<?php echo $model->id; ?></a></li>
                                 <li class="active">  lentorivi #<?php echo $model->id; ?></li>
